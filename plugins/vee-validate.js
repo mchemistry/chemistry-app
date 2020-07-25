@@ -3,7 +3,7 @@ import { extend } from 'vee-validate'
 
 extend('required', {
   ...required,
-  message: 'This field is required',
+  message: 'Thông tin không được để trống',
 })
 
 extend('email', {
@@ -19,4 +19,20 @@ extend('confirmed', {
 extend('length', {
   ...length,
   message: 'This field must have 2 options',
+})
+
+extend('passwords', {
+  validate: (value) => {
+    const patt = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+    return patt.test(String(value))
+  },
+  message: 'Mật khẩu ít nhất 8 kí tự gồm cả chữ hoa, thường và số',
+})
+
+extend('username', {
+  validate: (value) => {
+    const patt = /^[a-z0-9_-]{3,16}$/gim
+    return patt.test(String(value))
+  },
+  message: 'Tên tài khoản không phù hợp',
 })

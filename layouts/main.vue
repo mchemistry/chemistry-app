@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <nav class="navbar">
       <div class="navbar-brand">
         <nuxt-link class="navbar-item" to="/login">
@@ -56,6 +56,9 @@
 </template>
 
 <style scoped>
+.main {
+  overflow: hidden;
+}
 .logo {
   color: white;
   font-size: 30px;
