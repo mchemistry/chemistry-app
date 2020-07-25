@@ -1,12 +1,12 @@
 <template>
-  <RefactoredForm title="Đăng ký" isActive="true" />
+  <FormLogin title="Đăng ký" isSignUpPage="true" />
 </template>
 
 <script>
-import RefactoredForm from '../components/RefactoredForm'
+import FormLogin from '../components/FormLogin'
 export default {
   // eslint-disable-next-line vue/no-unused-components
-  components: { RefactoredForm },
+  components: { FormLogin },
   layout: 'login',
 }
 </script>

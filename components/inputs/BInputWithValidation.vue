@@ -6,6 +6,15 @@
     :rules="rules"
   >
     <b-field
+      v-if="login"
+      v-bind="$attrs"
+      :message="errors"
+      :type="{ 'is-danger': errors[0] }"
+    >
+      <b-input v-model="innerValue" v-bind="$attrs"></b-input>
+    </b-field>
+    <b-field
+      v-else
       v-bind="$attrs"
       :type="{ 'is-danger': errors[0], 'is-success': valid }"
       :message="errors"
@@ -33,6 +42,10 @@ export default {
     // eslint-disable-next-line vue/require-default-prop
     value: {
       type: null,
+    },
+    login: {
+      type: Boolean,
+      default: false,
     },
   },
   data: () => ({

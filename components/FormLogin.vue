@@ -1,20 +1,21 @@
 <template>
-  <div class="card" :class="{ fixedCard: isActive }">
+  <div class="card" :class="{ fixedCard: isSignUpPage }">
     <ValidationObserver ref="observer" v-slot="{ invalid }">
       <!-- the "passes" function on the slot-scope only chains if the validation is successfull -->
       <!-- Making it easier to call directly in the template than to call `passes` on the observer component -->
-      <section class="section custom-field" :class="{ fixedTop: isActive }">
+      <section class="section custom-field" :class="{ fixedTop: isSignUpPage }">
         <p class="title">{{ title }}</p>
         <BInputWithValidation
           v-model="email"
           rounded
-          rules="required|email"
+          :rules="isSignUpPage ? 'required|email' : 'required'"
+          :login="!isSignUpPage"
           type="email"
           label="Email"
           placeholder="Nhập vào email..."
         />
         <BInputWithValidation
-          v-if="title === 'Đăng ký'"
+          v-if="isSignUpPage"
           v-model="username"
           rounded
           rules="required|username"
@@ -24,7 +25,8 @@
         />
         <BInputWithValidation
           v-model="password"
-          rules="required|passwords"
+          :rules="isSignUpPage ? 'required|passwords' : 'required'"
+          :login="!isSignUpPage"
           password-reveal
           rounded
           type="password"
@@ -32,12 +34,11 @@
           vid="password"
           placeholder="Nhập vào mật khẩu..."
         />
-
-        <nuxt-link v-if="title === 'Đăng nhập'" to="/" class="forgot-password"
+        <nuxt-link v-if="!isSignUpPage" to="/" class="forgot-password"
           >Quên mật khẩu ?</nuxt-link
         >
         <BInputWithValidation
-          v-if="title === 'Đăng ký'"
+          v-if="isSignUpPage"
           v-model="confirmation"
           password-reveal
           rounded
@@ -54,8 +55,8 @@
           @click="passes(submit)"
           >{{ title }}</b-button
         >
-        <p v-if="title === 'Đăng nhập'" class="or">Hoặc</p>
-        <div v-if="title === 'Đăng nhập'" class="social">
+        <p v-if="!isSignUpPage" class="or">Hoặc</p>
+        <div v-if="!isSignUpPage" class="social">
           <img src="../static/facebook.png" alt="facebook" class="social-img" />
           <img
             src="../static/google-plus.png"
@@ -63,11 +64,11 @@
             class="social-img"
           />
         </div>
-        <p v-if="title === 'Đăng nhập'" class="to-signup">
+        <p v-if="!isSignUpPage" class="to-signup">
           Chưa có tài khoản ?
           <nuxt-link to="/signup">Đăng ký</nuxt-link>
         </p>
-        <p v-if="title === 'Đăng ký'" class="to-signup">
+        <p v-if="isSignUpPage" class="to-signup">
           Đã có tài khoản ?
           <nuxt-link to="/login">Đăng nhập</nuxt-link>
         </p>
@@ -81,13 +82,22 @@ import { ValidationObserver } from 'vee-validate'
 import BInputWithValidation from './inputs/BInputWithValidation'
 
 export default {
-  name: 'BuefyForm',
+  name: 'FormLogin',
   components: {
     ValidationObserver,
     BInputWithValidation,
   },
   // eslint-disable-next-line vue/require-prop-types
-  props: ['title', 'isActive'],
+  props: {
+    title: {
+      type: String,
+      default: '',
+    },
+    isSignUpPage: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data: () => ({
     email: '',
     username: '',
