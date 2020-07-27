@@ -48,7 +48,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['@/assets/styles/index.css'],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
@@ -89,5 +89,8 @@ export default {
    */
   build: {
     transpile: ['vue-particles', 'vee-validate/dist/rules'],
+  },
+  rules: {
+    'at-rule-no-unknown': null,
   },
 }

@@ -1,9 +1,10 @@
 <template>
-  <div class="card" :class="{ fixedCard: isSignUpPage }">
+  <div class="card">
     <ValidationObserver ref="observer" v-slot="{ invalid }">
       <!-- the "passes" function on the slot-scope only chains if the validation is successfull -->
       <!-- Making it easier to call directly in the template than to call `passes` on the observer component -->
-      <section class="section custom-field" :class="{ fixedTop: isSignUpPage }">
+      <section class="section custom-field">
+        <Logo class="fixed-logo" />
         <p class="title">{{ title }}</p>
         <BInputWithValidation
           v-model="email"
@@ -34,9 +35,11 @@
           vid="password"
           placeholder="Nhập vào mật khẩu..."
         />
-        <nuxt-link v-if="!isSignUpPage" to="/" class="forgot-password"
-          >Quên mật khẩu ?</nuxt-link
-        >
+        <div class="level-right">
+          <nuxt-link v-if="!isSignUpPage" to="/" class="forgot-password"
+            >Quên mật khẩu ?</nuxt-link
+          >
+        </div>
         <BInputWithValidation
           v-if="isSignUpPage"
           v-model="confirmation"
@@ -66,11 +69,11 @@
         </div>
         <p v-if="!isSignUpPage" class="to-signup">
           Chưa có tài khoản ?
-          <nuxt-link to="/signup">Đăng ký</nuxt-link>
+          <nuxt-link to="/auth/signup">Đăng ký</nuxt-link>
         </p>
         <p v-if="isSignUpPage" class="to-signup">
           Đã có tài khoản ?
-          <nuxt-link to="/login">Đăng nhập</nuxt-link>
+          <nuxt-link to="/auth/login">Đăng nhập</nuxt-link>
         </p>
       </section>
     </ValidationObserver>
@@ -80,12 +83,14 @@
 <script>
 import { ValidationObserver } from 'vee-validate'
 import BInputWithValidation from './inputs/BInputWithValidation'
+import Logo from './Logo'
 
 export default {
   name: 'FormLogin',
   components: {
     ValidationObserver,
     BInputWithValidation,
+    Logo,
   },
   // eslint-disable-next-line vue/require-prop-types
   props: {
@@ -129,44 +134,43 @@ export default {
 .card {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 75%;
   transform: translateX(-50%) translateY(-50%);
   z-index: 10000000;
   background-color: white;
   width: 350px;
-  height: 520px;
+  height: auto;
   border-radius: 15px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 2px 2px rgba(0, 0, 0, 0.2),
-    0 4px 4px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.1),
-    0 16px 16px rgba(0, 0, 0, 0.05);
-}
-.fixedCard {
-  height: 560px;
+  -webkit-box-shadow: 4px 10px 15px 1px #000;
+  -moz-box-shadow: 4px 10px 15px 1px rgba(0, 0, 0, 0.418);
+  box-shadow: 4px 10px 15px 1px rgba(0, 0, 0, 0.42);
 }
 .section {
   display: flex;
   flex-direction: column;
 }
+.fixed-logo {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
 .title {
   font-family: 'Varela Round', sans-serif;
   font-size: 25px;
   text-align: center;
-  margin-top: 22px;
+  margin-top: 30px;
   margin-bottom: 30px;
   color: #7957d5;
 }
 .custom-field {
   width: 280px;
   margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 20px;
   padding: 1px;
-}
-.fixedTop {
-  margin-top: 1px;
 }
 .forgot-password {
   margin-top: 5px;
-  margin-right: 1px;
   float: right;
   text-align: right;
 }
@@ -193,5 +197,6 @@ export default {
 .to-signup {
   margin-top: 15px;
   text-align: center;
+  margin-bottom: 20px;
 }
 </style>
