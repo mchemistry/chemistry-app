@@ -1,6 +1,9 @@
 <template>
   <div class="bg-login">
     <div class="bg-left">
+      <div class="lable">
+        <p class="lable-for-atom">Atom</p>
+      </div>
       <Atom />
     </div>
     <nuxt />
@@ -13,6 +16,12 @@ export default {
 }
 </script>
 <style scoped>
+.lable-for-atom {
+  text-align: center;
+  margin-top: 40px;
+  color: white;
+  font-size: 25px;
+}
 .bg-login {
   height: 100vh;
   display: flex;

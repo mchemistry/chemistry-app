@@ -16,8 +16,8 @@ export default {}
 .hexagon {
   width: 80px;
   height: 46.19px;
-  background-color: #8e44ad;
-  box-shadow: 0 0 20px rgba(10, 9, 17, 0.3);
+  background: #8e44ad;
+  box-shadow: 20px 20px 60px #793a93, -10px -10px 60px #a34ec7;
   border-left: solid 2px #fff;
   border-right: solid 2px #fff;
 }
