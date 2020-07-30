@@ -3,7 +3,7 @@
     <b-navbar class="nav-bg" type="is-primary" shadow transparent>
       <template slot="brand">
         <b-navbar-item tag="router-link" :to="{ path: '/' }">
-          <img class="logo" src="../static/logo.svg" />
+          <img class="logo" src="../assets/images/logo.svg" />
         </b-navbar-item>
       </template>
       <template slot="start">
@@ -12,7 +12,11 @@
       </template>
 
       <template slot="end">
-        <img src="../static/avatar.jpg" alt="avatar" class="avatar" />
+        <img
+          src="../static/avatar/default-avatar.png"
+          alt="avatar"
+          class="avatar"
+        />
         <b-navbar-dropdown label="Tân Dv" right class="fixed-text">
           <b-navbar-item href="#" class="nav-items">
             <b-icon class="media-left" icon="settings"></b-icon>

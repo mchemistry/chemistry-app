@@ -60,9 +60,13 @@
         >
         <p v-if="!isSignUpPage" class="or">Hoặc</p>
         <div v-if="!isSignUpPage" class="social">
-          <img src="../static/facebook.png" alt="facebook" class="social-img" />
           <img
-            src="../static/google-plus.png"
+            src="../static/icons/facebook.png"
+            alt="facebook"
+            class="social-img"
+          />
+          <img
+            src="../static/icons/google-plus.png"
             alt="google"
             class="social-img"
           />

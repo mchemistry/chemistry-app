@@ -12,7 +12,11 @@
           <b-tag rounded type="is-success" class="level">Gà con</b-tag>
           <b-dropdown position="is-bottom-left" append-to-body aria-role="menu">
             <a slot="trigger" class="navbar-item" role="button">
-              <img src="../static/avatar.jpg" alt="avatar" class="avatar" />
+              <img
+                src="../static/icons/avatar.jpg"
+                alt="avatar"
+                class="avatar"
+              />
               <b-icon icon="menu-down" class="icon-dropdown"></b-icon>
             </a>
 

@@ -30,14 +30,15 @@
 
 <script>
 export default {
+  name: 'Atom',
   props: {
     electron: {
       type: Number,
-      default: 50,
+      default: 1,
     },
     element: {
       type: String,
-      default: 'Na',
+      default: 'H',
     },
   },
   data() {
@@ -64,7 +65,8 @@ export default {
         19: [96, [2, 8, 18, 32, 25, 9, 2]],
         20: [103, [2, 8, 18, 32, 32, 8, 3]],
       },
-      radius: [25, 50, 75, 100, 125, 150, 175],
+      radius: [50, 65, 80, 95, 110, 125, 140],
+      data: [],
     }
   },
   methods: {
@@ -79,8 +81,9 @@ export default {
     },
     checkQuadrant(deg) {
       const miniDeg = deg % 90
-      if (deg === 360) deg = 0
-      if (deg >= 0 && deg < 90) return [1, miniDeg]
+      if (deg > 360) return [1, miniDeg] // 1 vai truong hop goc lon hon 360 Ex: 360.0000001
+      if (deg === 360) return [1, miniDeg]
+      if (deg >= 1 && deg < 90) return [1, miniDeg]
       if (deg >= 90 && deg < 180) return [2, miniDeg]
       if (deg >= 180 && deg < 270) return [3, miniDeg]
       if (deg >= 270 && deg < 360) return [4, miniDeg]
@@ -189,7 +192,7 @@ export default {
 <style scoped>
 .container {
   position: absolute;
-  top: 40%;
+  top: 30%;
   left: 25%;
   transform: translateX(-50%) translateY(-50%);
 }
@@ -203,8 +206,8 @@ export default {
 }
 
 .proton {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   background-color: blueviolet;
   border: none;
   animation: blink 1.5s infinite;
@@ -212,12 +215,16 @@ export default {
 
 .element {
   color: white;
-  font-size: 15px;
+  font-size: 16px;
+  font-weight: bold;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  margin-top: 13px;
-  margin-left: 12.5px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  margin-left: 18px;
+  margin-top: 18px;
 }
 
 .container div span {
