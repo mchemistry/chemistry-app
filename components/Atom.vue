@@ -259,7 +259,7 @@ export default {
 
 @keyframes blink {
   0% {
-    border: 1px solid rgb(207, 207, 207);
+    border: 1px solid rgba(255, 40, 40, 0.74);
   }
   100% {
     border: 1px solid rgb(150, 149, 149);

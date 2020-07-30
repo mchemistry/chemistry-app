@@ -8,9 +8,29 @@
     </div>
     <div class="columns is-8">
       <div class="column">
-        e <sup>-</sup> Configuration: {{ configuration }}
+        <ElectronProperties :configuration="configuration" />
       </div>
-      <div class="column">Phase : {{ phase }}</div>
+      <div class="column phase">
+        <p>Phase :</p>
+        <img
+          v-if="phase === 'Gas'"
+          src="../static/icons/Gas.png"
+          alt="Gas"
+          class="icon-phase"
+        />
+        <img
+          v-if="phase === 'Liquid'"
+          src="../static/icons/Liquid.png"
+          alt="Liquid"
+          class="icon-phase"
+        />
+        <img
+          v-if="phase === 'Solid'"
+          src="../static/icons/Solid.png"
+          alt="Solid"
+          class="icon-phase"
+        />
+      </div>
     </div>
     <div class="content is-small">
       <h1 class="sum">Summary</h1>
@@ -22,8 +42,11 @@
 </template>
 
 <script>
+import ElectronProperties from './electron/ElectronProperties'
+
 export default {
   name: 'AtomInformations',
+  components: { ElectronProperties },
   props: {
     element: {
       type: String,
@@ -72,5 +95,14 @@ sup {
   margin: 5px;
   color: rgba(235, 235, 235, 0.911);
   padding-left: 30px;
+}
+.phase {
+  display: flex;
+  flex-direction: row;
+}
+.icon-phase {
+  width: 26px;
+  height: 26px;
+  margin-left: 10px;
 }
 </style>
