@@ -1,12 +1,12 @@
 <template>
-  <FormResetPassword title="Đăng nhập" />
+  <FormSendEmailReset />
 </template>
 
 <script>
-import FormResetPassword from '@/components/forms/FormResetPassword'
+import FormSendEmailReset from '@/components/forms/FormSendEmailReset'
 export default {
   // eslint-disable-next-line vue/no-unused-components
-  components: { FormResetPassword },
+  components: { FormSendEmailReset },
   layout: 'login',
 }
 </script>

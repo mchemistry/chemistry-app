@@ -4,44 +4,37 @@
       <!-- the "passes" function on the slot-scope only chains if the validation is successfull -->
       <!-- Making it easier to call directly in the template than to call `passes` on the observer component -->
       <section class="section custom-field">
-        <p class="title">Thay đổi mật khẩu</p>
-        <img :src="imgAvatar" alt="avatar" class="avatar" />
-        <Information
-          v-if="success"
-          type="success"
-          :message="message"
-        ></Information>
+        <p class="title">Khôi phục mật khẩu</p>
+        <b-icon
+          class="icon-password"
+          icon="lock"
+          size="is-large"
+          type="is-primary"
+        >
+        </b-icon>
+        <Information :message="message" :type="type"></Information>
         <BInputWithValidation
           v-if="success === null"
-          v-model="password"
-          rules="required|passwords"
-          password-reveal
+          v-model="email"
           rounded
-          type="password"
-          label="Mật khẩu mới"
-          vid="password"
-          placeholder="Nhập vào mật khẩu mới..."
-          icon="lock"
-        />
-        <BInputWithValidation
-          v-if="success === null"
-          v-model="confirmation"
-          password-reveal
-          rounded
-          rules="required|confirmed:password"
-          name="Password"
-          type="password"
-          label="Nhập lại mật khẩu"
-          placeholder="Nhập lại mật khẩu..."
-          icon="lock"
+          :rules="'required|email'"
+          type="email"
+          placeholder="Nhập vào email khôi phục..."
+          icon="email"
         />
         <b-button
           v-if="!isLoading"
-          :disabled="invalid"
-          :icon-left="success ? 'arrow-left' : ''"
+          :icon-left="success === null ? '' : 'arrow-left'"
+          :disabled="success === null ? invalid : false"
           class="is-primary btn-login"
           rounded
-          @click="success ? gotoLogin() : resetPassword()"
+          @click="
+            success === null
+              ? resetPassword()
+              : success
+              ? goSignInPage()
+              : retypeEmail()
+          "
           >{{ textButton }}</b-button
         >
         <Loading v-if="isLoading"></Loading>
@@ -53,49 +46,50 @@
 <script>
 import { ValidationObserver } from 'vee-validate'
 import BInputWithValidation from '../inputs/BInputWithValidation'
-import Information from '../information/Information'
 import Loading from '../loading/Loading'
+import Information from '../information/Information'
 
 export default {
-  name: 'FormLogin',
+  name: 'FormSendEmailReset',
   components: {
     ValidationObserver,
     BInputWithValidation,
     Loading,
     Information,
   },
-  props: {
-    isExpired: {
-      type: Boolean,
-      default: false,
-    },
-  },
   data: () => ({
-    password: '',
-    confirmation: '',
-    success: null,
+    email: '',
     isLoading: false,
-    textButton: 'Đổi mật khẩu',
-    imgAvatar: 'https://image.flaticon.com/icons/svg/3231/3231474.svg',
-    message: '',
+    type: '',
+    message:
+      'Vui lòng nhập vào email bạn đã đăng ký, chúng tôi sẽ gửi cho bạn một đường link khôi phục lại mật khẩu.',
+    textButton: 'Lấy lại mật khẩu',
+    success: null,
   }),
-  mounted() {
-    // this.isExpired = true
-    // this.$emit('expired', this.isExpired)
-    // if (this.isExpired) this.$router.push('/auth/password_reset')
-  },
   methods: {
     resetPassword() {
       setTimeout(() => {
         this.isLoading = false
-        this.textButton = 'Quay lại đăng nhập'
         this.success = true
-        this.message =
-          'Thay đổi mật khẩu thành công! Ấn nút bên dưới để quay lại trang đăng nhập'
+        this.type = 'success'
+        this.textButton = 'Quay về trang đăng nhập'
+        this.message = `Chúng tôi vừa gửi cho bạn một đường link khôi phục mật khẩu vào emai ${this.email}. Nếu không nhận được đường link khôi phục, vui lòng kiểm tra tại thư mục spam.`
+        // this.$buefy.toast.open({
+        //   message: 'Đăng nhập thành công!',
+        //   type: 'is-success',
+        // })
       }, 3000)
       this.isLoading = true
     },
-    gotoLogin() {
+    retypeEmail() {
+      this.email = ''
+      this.type = ''
+      this.message =
+        'Vui lòng nhập vào email bạn đã đăng ký, chúng tôi sẽ gửi cho bạn một đường link khôi phục lại mật khẩu.'
+      this.textButton = 'Lấy lại mật khẩu'
+      this.success = null
+    },
+    goSignInPage() {
       this.$router.push('/auth/login')
     },
   },
@@ -110,7 +104,7 @@ export default {
   transform: translateX(-50%) translateY(-50%);
   z-index: 10000000;
   background-color: white;
-  width: 350px;
+  width: 400px;
   height: auto;
   border-radius: 15px;
   -webkit-box-shadow: 4px 10px 15px 1px #000;
@@ -121,6 +115,15 @@ export default {
   display: flex;
   flex-direction: column;
 }
+.hide {
+  display: none;
+}
+.icon-password {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  margin-top: -8px;
+}
 .title {
   font-family: 'Varela Round', sans-serif;
   font-size: 25px;
@@ -130,26 +133,14 @@ export default {
   color: #7957d5;
 }
 .custom-field {
-  width: 280px;
+  width: 360px;
   margin: 0 auto;
   margin-top: 20px;
   padding: 1px;
   margin-bottom: 40px;
 }
-.avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 1px solid violet;
-  margin: 0 auto;
-  margin-top: -10px;
-  margin-bottom: 20px;
-}
 .btn-login {
   width: 100%;
   margin-top: 15px;
-}
-.hide {
-  display: none;
 }
 </style>

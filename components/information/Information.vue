@@ -12,7 +12,7 @@
     <b-icon
       :class="[type === '' ? 'hide' : '', 'icon-information']"
       :icon="type === 'danger' ? 'exclamation' : 'check'"
-      size="is-large"
+      size="is-medium"
       :type="
         type === 'danger'
           ? 'is-danger'
@@ -56,10 +56,12 @@ export default {
   color: white;
   background-color: transparent;
   font-size: 12px !important;
+  margin-top: 6px;
+  margin-bottom: 5px;
 }
 .icon-information {
   color: white !important;
-  margin-right: 5px;
+  margin-right: 10px;
   height: 100%;
   top: 50%;
 }

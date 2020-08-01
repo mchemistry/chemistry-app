@@ -8,15 +8,15 @@
         <BInputWithValidation
           v-model="email"
           rounded
-          :rules="isSignUpPage ? 'required|email' : 'required'"
-          :login="!isSignUpPage"
+          :rules="isRegisterPage ? 'required|email' : 'required'"
+          :login="!isRegisterPage"
           type="email"
           label="Email"
           placeholder="Nhập vào email..."
           icon="email"
         />
         <BInputWithValidation
-          v-if="isSignUpPage"
+          v-if="isRegisterPage"
           v-model="username"
           rounded
           rules="required|username"
@@ -27,8 +27,8 @@
         />
         <BInputWithValidation
           v-model="password"
-          :rules="isSignUpPage ? 'required|passwords' : 'required'"
-          :login="!isSignUpPage"
+          :rules="isRegisterPage ? 'required|passwords' : 'required'"
+          :login="!isRegisterPage"
           password-reveal
           rounded
           type="password"
@@ -38,12 +38,12 @@
           icon="lock"
         />
         <div class="level-right">
-          <nuxt-link v-if="!isSignUpPage" to="/" class="forgot-password"
+          <nuxt-link v-if="!isRegisterPage" to="/" class="forgot-password"
             >Quên mật khẩu ?</nuxt-link
           >
         </div>
         <BInputWithValidation
-          v-if="isSignUpPage"
+          v-if="isRegisterPage"
           v-model="confirmation"
           password-reveal
           rounded
@@ -59,12 +59,12 @@
           :disabled="invalid"
           class="is-primary btn-login"
           rounded
-          @click="isSignUpPage ? signup() : login()"
+          @click="isRegisterPage ? signup() : login()"
           >{{ title }}</b-button
         >
         <Loading v-if="isSubmit"></Loading>
-        <p v-if="!isSignUpPage" class="or">Hoặc</p>
-        <div v-if="!isSignUpPage" class="social">
+        <p v-if="!isRegisterPage" class="or">Hoặc</p>
+        <div v-if="!isRegisterPage" class="social">
           <img
             src="../../static/icons/facebook.png"
             alt="facebook"
@@ -76,11 +76,11 @@
             class="social-img"
           />
         </div>
-        <p v-if="!isSignUpPage" class="to-signup">
+        <p v-if="!isRegisterPage" class="to-signup">
           Chưa có tài khoản ?
           <nuxt-link to="/auth/register">Đăng ký</nuxt-link>
         </p>
-        <p v-if="isSignUpPage" class="to-signup">
+        <p v-if="isRegisterPage" class="to-signup">
           Đã có tài khoản ?
           <nuxt-link to="/auth/login">Đăng nhập</nuxt-link>
         </p>
@@ -107,7 +107,7 @@ export default {
       type: String,
       default: '',
     },
-    isSignUpPage: {
+    isRegisterPage: {
       type: Boolean,
       default: false,
     },

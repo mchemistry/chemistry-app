@@ -1,5 +1,5 @@
 <template>
-  <FormLogin :isSignUpPage="active" title="Đăng ký" />
+  <FormLogin :is-register-page="active" title="Đăng ký" />
 </template>
 
 <script>
