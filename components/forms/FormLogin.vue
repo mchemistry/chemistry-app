@@ -4,7 +4,6 @@
       <!-- the "passes" function on the slot-scope only chains if the validation is successfull -->
       <!-- Making it easier to call directly in the template than to call `passes` on the observer component -->
       <section class="section custom-field">
-        <Logo class="fixed-logo" />
         <p class="title">{{ title }}</p>
         <BInputWithValidation
           v-model="email"
@@ -14,6 +13,7 @@
           type="email"
           label="Email"
           placeholder="Nhập vào email..."
+          icon="email"
         />
         <BInputWithValidation
           v-if="isSignUpPage"
@@ -23,6 +23,7 @@
           type="username"
           label="Tên tài khoản"
           placeholder="Nhập vào tên tài khoản..."
+          icon="account"
         />
         <BInputWithValidation
           v-model="password"
@@ -34,6 +35,7 @@
           label="Mật khẩu"
           vid="password"
           placeholder="Nhập vào mật khẩu..."
+          icon="lock"
         />
         <div class="level-right">
           <nuxt-link v-if="!isSignUpPage" to="/" class="forgot-password"
@@ -50,30 +52,33 @@
           type="password"
           label="Nhập lại mật khẩu"
           placeholder="Nhập lại mật khẩu..."
+          icon="lock"
         />
         <b-button
+          v-if="!isSubmit"
           :disabled="invalid"
           class="is-primary btn-login"
           rounded
-          @click="passes(submit)"
+          @click="isSignUpPage ? signup() : login()"
           >{{ title }}</b-button
         >
+        <Loading v-if="isSubmit"></Loading>
         <p v-if="!isSignUpPage" class="or">Hoặc</p>
         <div v-if="!isSignUpPage" class="social">
           <img
-            src="../static/icons/facebook.png"
+            src="../../static/icons/facebook.png"
             alt="facebook"
             class="social-img"
           />
           <img
-            src="../static/icons/google-plus.png"
+            src="../../static/icons/google-plus.png"
             alt="google"
             class="social-img"
           />
         </div>
         <p v-if="!isSignUpPage" class="to-signup">
           Chưa có tài khoản ?
-          <nuxt-link to="/auth/signup">Đăng ký</nuxt-link>
+          <nuxt-link to="/auth/register">Đăng ký</nuxt-link>
         </p>
         <p v-if="isSignUpPage" class="to-signup">
           Đã có tài khoản ?
@@ -86,15 +91,15 @@
 
 <script>
 import { ValidationObserver } from 'vee-validate'
-import BInputWithValidation from './inputs/BInputWithValidation'
-import Logo from './Logo'
+import BInputWithValidation from '../inputs/BInputWithValidation'
+import Loading from '../loading/Loading'
 
 export default {
   name: 'FormLogin',
   components: {
     ValidationObserver,
     BInputWithValidation,
-    Logo,
+    Loading,
   },
   // eslint-disable-next-line vue/require-prop-types
   props: {
@@ -114,11 +119,28 @@ export default {
     confirmation: '',
     subject: '',
     choices: [],
+    isSubmit: false,
   }),
   methods: {
-    submit() {
-      // eslint-disable-next-line no-console
-      console.log('Form submitted yay!')
+    login() {
+      setTimeout(() => {
+        this.isSubmit = false
+        this.$buefy.toast.open({
+          message: 'Đăng nhập thành công!',
+          type: 'is-success',
+        })
+      }, 3000)
+      this.isSubmit = true
+    },
+    signup() {
+      setTimeout(() => {
+        this.isSubmit = false
+        this.$buefy.toast.open({
+          message: 'Đăng ký thất bại!',
+          type: 'is-danger',
+        })
+      }, 3000)
+      this.isSubmit = true
     },
     resetForm() {
       this.email = ''
@@ -152,12 +174,6 @@ export default {
 .section {
   display: flex;
   flex-direction: column;
-}
-.fixed-logo {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
 }
 .title {
   font-family: 'Varela Round', sans-serif;

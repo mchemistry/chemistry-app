@@ -1,15 +1,26 @@
 <template>
   <div class="hexagon">
     <span>
-      <p class="electron">2</p>
-      <p class="chemical-element">He</p>
-      <p class="automic-mass">2</p>
+      <p class="electron">{{ electron }}</p>
+      <p class="chemical-element">{{ symbol }}</p>
     </span>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'Logo',
+  props: {
+    electron: {
+      type: Number,
+      default: 1,
+    },
+    symbol: {
+      type: String,
+      default: 'H',
+    },
+  },
+}
 </script>
 
 <style scoped>
@@ -66,7 +77,6 @@ export default {}
   position: relative;
   top: -20px;
   font-weight: bold;
-  left: 5px;
 }
 .electron {
   position: relative;

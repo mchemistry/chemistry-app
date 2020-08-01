@@ -29,6 +29,13 @@ extend('passwords', {
   message: 'Mật khẩu ít nhất 8 kí tự gồm cả chữ hoa, thường và số',
 })
 
+extend('failure-email', {
+  validate: (value) => {
+    return false
+  },
+  message: 'Email không tồn tại trên hệ thống !',
+})
+
 extend('username', {
   validate: (value) => {
     const patt = /^[a-z0-9_-]{3,16}$/gim

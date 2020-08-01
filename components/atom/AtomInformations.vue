@@ -14,19 +14,19 @@
         <p>Phase :</p>
         <img
           v-if="phase === 'Gas'"
-          src="../static/icons/Gas.png"
+          src="../../static/icons/Gas.png"
           alt="Gas"
           class="icon-phase"
         />
         <img
           v-if="phase === 'Liquid'"
-          src="../static/icons/Liquid.png"
+          src="../../static/icons/Liquid.png"
           alt="Liquid"
           class="icon-phase"
         />
         <img
           v-if="phase === 'Solid'"
-          src="../static/icons/Solid.png"
+          src="../../static/icons/Solid.png"
           alt="Solid"
           class="icon-phase"
         />
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import ElectronProperties from './electron/ElectronProperties'
+import ElectronProperties from '../electron/ElectronProperties'
 
 export default {
   name: 'AtomInformations',
@@ -86,6 +86,7 @@ sup {
 }
 .sum {
   color: rgba(235, 235, 235, 0.911);
+  padding-bottom: 5px;
 }
 
 .content .sum {

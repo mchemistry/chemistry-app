@@ -1,7 +1,11 @@
 <template>
   <div class="bg-login">
     <div class="bg-left">
-      <Atom :electron="subElement.number" :element="subElement.symbol" />
+      <Atom
+        :electron="subElement.number"
+        :element="subElement.symbol"
+        :shells="subElement.shells"
+      />
       <AtomInformations
         :element="subElement.name"
         :configuration="subElement.electron_configuration_semantic"
@@ -15,8 +19,8 @@
   </div>
 </template>
 <script>
-import Atom from '../components/Atom.vue'
-import AtomInformations from '../components/AtomInformations'
+import Atom from '../components/atom/Atom.vue'
+import AtomInformations from '../components/atom/AtomInformations'
 import data from '../static/data/element-data.json'
 export default {
   components: {
@@ -31,8 +35,6 @@ export default {
   },
   created() {
     this.randomElements()
-    // eslint-disable-next-line no-console
-    console.log(this.subElement)
   },
   methods: {
     randomElements() {
@@ -40,7 +42,7 @@ export default {
         this.subElement = this.elements[
           Math.floor(Math.random() * this.elements.length)
         ]
-      }, 20000)
+      }, 15000)
     },
   },
 }
@@ -56,6 +58,7 @@ export default {
   height: 100vh;
   display: flex;
   flex-direction: row;
+  background-color: #f6f6f6;
 }
 .bg-left {
   background-color: #9b59b6;

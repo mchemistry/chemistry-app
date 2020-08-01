@@ -2,10 +2,21 @@
 <template>
   <div class="container">
     <div class="proton">
-      <p class="element">{{ element }}</p>
+      <p
+        :class="[
+          checkChar(element) === 3
+            ? 'threeChar'
+            : checkChar(element) === 1
+            ? 'oneChar'
+            : '',
+          'element',
+        ]"
+      >
+        {{ element }}
+      </p>
     </div>
     <div
-      v-for="(item, index) in getMtAndMl(radius, convertElectron(electron))"
+      v-for="(item, index) in getMtAndMl(radius, shells)"
       :key="index"
       :style="{
         'margin-left': -radius[index] + 'px',
@@ -23,7 +34,8 @@
           'margin-top': item2[0] + 'px',
           'margin-left': item2[1] + 'px',
         }"
-      ></span>
+      >
+      </span>
     </div>
   </div>
 </template>
@@ -32,9 +44,15 @@
 export default {
   name: 'Atom',
   props: {
-    electron: {
-      type: Number,
-      default: 1,
+    // electron: {
+    //   type: Number,
+    //   default: 1,
+    // },
+    shells: {
+      type: Array,
+      default() {
+        return [1]
+      },
     },
     element: {
       type: String,
@@ -67,9 +85,13 @@ export default {
       },
       radius: [50, 65, 80, 95, 110, 125, 140],
       data: [],
+      isThreeChar: false,
     }
   },
   methods: {
+    checkChar(str) {
+      return str.length
+    },
     checkException(e) {
       const getException = Object.values(this.exceptions)
       for (let i = 0; i < 20; i++) {
@@ -213,6 +235,14 @@ export default {
   animation: blink 1.5s infinite;
 }
 
+.threeChar {
+  margin-left: 15px !important;
+}
+
+.oneChar {
+  margin-left: 19.5px !important;
+}
+
 .element {
   color: white;
   font-size: 16px;
@@ -226,7 +256,6 @@ export default {
   margin-left: 18px;
   margin-top: 18px;
 }
-
 .container div span {
   position: absolute;
   top: 50%;
@@ -236,6 +265,7 @@ export default {
   height: 7px;
   border-radius: 50%;
   background-color: rgb(209, 191, 191);
+  border: 0.02px solid deeppink;
 }
 
 .animation {
