@@ -79,7 +79,7 @@ sup {
   margin-left: -5px;
 }
 .element {
-  color: rgb(126, 255, 66);
+  color: white;
   font-weight: bold;
 }
 .content {

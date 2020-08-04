@@ -2,7 +2,7 @@ import data from '../../../static/data/element-data.json'
 
 export default {
   data: data.elements,
-  radius: [50, 65, 80, 95, 110, 125, 140],
+  radius: [50, 65, 80, 95, 110, 125, 140, 155],
   subElement: {
     element: 'Hidro',
     configuration: '1s1',
@@ -13,5 +13,28 @@ export default {
     summary:
       'Hydrogen is a chemical element with chemical symbol H and atomic number 1. With an atomic weight of 1.00794 u, hydrogen is the lightest element on the periodic table. Its monatomic form (H) is the most abundant chemical substance in the Universe, constituting roughly 75% of all baryonic mass.',
   },
-  arrayMargin: [],
+  exceptions: [
+    24,
+    28,
+    29,
+    41,
+    42,
+    44,
+    45,
+    46,
+    47,
+    57,
+    58,
+    64,
+    78,
+    79,
+    89,
+    90,
+    91,
+    92,
+    93,
+    96,
+    103,
+  ],
+  special: false,
 }

@@ -1,14 +1,17 @@
 <template>
   <div>
-    <p
+    <div
       :style="{ size: size }"
-      :class="{ special: isSpecial }"
+      :class="{ special: special }"
       v-html="convertConfiguation(configuration)"
-    ></p>
+    ></div>
   </div>
 </template>
 
 <script>
+import { createNamespacedHelpers } from 'vuex'
+const { mapGetters } = createNamespacedHelpers('atom')
+
 export default {
   name: 'ElectronProperties',
   props: {
@@ -21,10 +24,8 @@ export default {
       default: '1s1',
     },
   },
-  data() {
-    return {
-      isSpecial: false,
-    }
+  computed: {
+    ...mapGetters(['special']),
   },
   methods: {
     convertConfiguation(config) {
@@ -52,6 +53,8 @@ export default {
         }
         newString += newWord
       }
+      if (this.special)
+        newString += `<p style="color : white; font-size: 12px;"> (Special Configuration)</p>`
       return newString
     },
   },
@@ -61,5 +64,8 @@ export default {
 <style lang="css" scoped>
 .special {
   color: white;
+}
+.is {
+  color: #ef8a00 !important;
 }
 </style>

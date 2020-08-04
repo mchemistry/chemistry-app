@@ -1,7 +1,7 @@
 /* eslint-disable vue/require-v-for-key */
 <template>
   <div class="container">
-    <div class="proton">
+    <div class="proton flash">
       <p
         :class="[
           subElement.symbol.length === 3
@@ -67,7 +67,7 @@ export default {
 .proton {
   width: 40px;
   height: 40px;
-  background-color: blueviolet;
+  background-color: #ef8a00;
   border: none;
   animation: blink 1.5s infinite;
 }
@@ -102,7 +102,7 @@ export default {
   height: 7px;
   border-radius: 50%;
   background-color: rgb(209, 191, 191);
-  border: 0.02px solid deeppink;
+  border: 0.02px solid #e35d51;
 }
 
 .animation {
@@ -113,6 +113,10 @@ export default {
   animation-fill-mode: none;
   animation-play-state: running;
   animation-name: spinner;
+}
+
+.flash:hover {
+  border: 1px solid white;
 }
 
 @keyframes spinner {
@@ -126,7 +130,7 @@ export default {
 
 @keyframes blink {
   0% {
-    border: 1px solid rgba(255, 40, 40, 0.74);
+    border: 1px solid rgb(255, 255, 255);
   }
   100% {
     border: 1px solid rgb(150, 149, 149);
