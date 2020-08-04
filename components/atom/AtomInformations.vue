@@ -35,7 +35,8 @@
     <div class="content is-small">
       <h1 class="sum">Summary</h1>
       <p class="is-white">
-        {{ summary }}
+        <span class="element">{{ summary.split(' ')[0] }} - </span
+        >{{ summary.split(' ').slice(1).join(' ') }}
       </p>
     </div>
   </div>
@@ -76,6 +77,10 @@ export default {
 <style scoped>
 sup {
   margin-left: -5px;
+}
+.element {
+  color: rgb(126, 255, 66);
+  font-weight: bold;
 }
 .content {
   padding: 1.5rem;

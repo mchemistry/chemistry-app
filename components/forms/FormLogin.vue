@@ -38,7 +38,10 @@
           icon="lock"
         />
         <div class="level-right">
-          <nuxt-link v-if="!isRegisterPage" to="/" class="forgot-password"
+          <nuxt-link
+            v-if="!isRegisterPage"
+            to="/auth/password_reset"
+            class="forgot-password"
             >Quên mật khẩu ?</nuxt-link
           >
         </div>
