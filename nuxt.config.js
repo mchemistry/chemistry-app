@@ -30,7 +30,12 @@ export default {
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap',
+          'https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap',
+      },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500&display=swap',
       },
       {
         rel: 'stylesheet',
@@ -53,7 +58,11 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['@/plugins/vue-particles.js', '@/plugins/vee-validate.js'],
+  plugins: [
+    '@/plugins/vue-particles.js',
+    '@/plugins/vee-validate.js',
+    '@plugins/vue-scroll.js',
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components

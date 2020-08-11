@@ -2,6 +2,11 @@
   <div class="bg-login">
     <client-only>
       <div class="bg-left">
+        <img
+          class="logo"
+          src="../assets/images/logo-clabs.svg"
+          alt="logo-clabs"
+        />
         <Atom :sub-element="subElement" :data="arrMargin" :radius="radius" />
         <AtomInformations
           :element="subElement.name"
@@ -48,6 +53,13 @@ export default {
 }
 </script>
 <style scoped>
+.logo {
+  width: 120px;
+  height: 150px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
 .atom-information {
   position: absolute;
   bottom: 10px;

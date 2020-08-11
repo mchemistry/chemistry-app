@@ -125,7 +125,7 @@ export default {
   margin-top: -8px;
 }
 .title {
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Varela Round', sans-serif !important;
   font-size: 25px;
   text-align: center;
   margin-top: 30px;

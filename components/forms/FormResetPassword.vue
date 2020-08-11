@@ -122,7 +122,7 @@ export default {
   flex-direction: column;
 }
 .title {
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Varela Round', sans-serif !important;
   font-size: 25px;
   text-align: center;
   margin-top: 30px;
