@@ -122,12 +122,11 @@ export default {
   flex-direction: column;
 }
 .title {
-  font-family: 'Varela Round', sans-serif !important;
   font-size: 25px;
   text-align: center;
   margin-top: 30px;
   margin-bottom: 30px;
-  color: #7957d5;
+  color: #6b048c;
 }
 .custom-field {
   width: 280px;

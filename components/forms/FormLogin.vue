@@ -41,7 +41,7 @@
           <nuxt-link
             v-if="!isRegisterPage"
             to="/auth/password_reset"
-            class="forgot-password"
+            class="forgot-password link-to-signup"
             >Quên mật khẩu ?</nuxt-link
           >
         </div>
@@ -81,11 +81,15 @@
         </div>
         <p v-if="!isRegisterPage" class="to-signup">
           Chưa có tài khoản ?
-          <nuxt-link to="/auth/register">Đăng ký</nuxt-link>
+          <nuxt-link to="/auth/register" class="link-to-signup"
+            >Đăng ký</nuxt-link
+          >
         </p>
         <p v-if="isRegisterPage" class="to-signup">
           Đã có tài khoản ?
-          <nuxt-link to="/auth/login">Đăng nhập</nuxt-link>
+          <nuxt-link to="/auth/login" class="link-to-signup"
+            >Đăng nhập</nuxt-link
+          >
         </p>
       </section>
     </ValidationObserver>
@@ -179,12 +183,11 @@ export default {
   flex-direction: column;
 }
 .title {
-  font-family: 'Varela Round', sans-serif !important;
   font-size: 25px;
   text-align: center;
   margin-top: 30px;
   margin-bottom: 30px;
-  color: #7957d5;
+  color: #6b048c;
 }
 .custom-field {
   width: 280px;
@@ -221,5 +224,12 @@ export default {
   margin-top: 15px;
   text-align: center;
   margin-bottom: 20px;
+}
+.link-to-signup {
+  color: #6b048c;
+}
+.link-to-signup:hover {
+  color: #ff7070;
+  transition: all 0.5s;
 }
 </style>

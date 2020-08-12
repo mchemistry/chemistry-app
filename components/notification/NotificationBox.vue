@@ -1,84 +1,44 @@
 <template>
   <div class="boxx">
+    <div class="down-arrow"></div>
     <div class="box-title">
       Thông báo
       <a class="mark-as-read">Đánh dấu tất cả là đã đọc</a>
     </div>
     <vue-scroll :ops="ops">
       <div class="list-notifications">
-        <div class="noti">
-          <div class="avatar">
-            <avatar :size="48"></avatar>
-            <span class="unread"></span>
-          </div>
-          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-        </div>
-        <div class="noti">
-          <div class="avatar">
-            <avatar :size="48"></avatar>
-            <span class="un-read"></span>
-          </div>
-          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-        </div>
-        <div class="noti">
-          <div class="avatar">
-            <avatar :size="48"></avatar>
-            <span class="un-read"></span>
-          </div>
-          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-        </div>
-        <div class="noti">
-          <div class="avatar">
-            <avatar :size="48"></avatar>
-            <span class="un-read"></span>
-          </div>
-          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-        </div>
-        <div class="noti">
-          <div class="avatar">
-            <avatar :size="48"></avatar>
-            <span class="un-read"></span>
-          </div>
-          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-        </div>
-        <div class="noti">
-          <div class="avatar">
-            <avatar :size="48"></avatar>
-            <span class="unread"></span>
-          </div>
-          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-        </div>
-        <div class="noti">
-          <div class="avatar">
-            <avatar :size="48"></avatar>
-            <span class="un-read"></span>
-          </div>
-          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-        </div>
+        <noti-list :un-read="false"></noti-list>
+        <noti-list></noti-list>
+        <noti-list></noti-list>
+        <noti-list></noti-list>
+        <noti-list></noti-list>
+        <noti-list></noti-list>
+        <noti-list></noti-list>
+        <noti-list></noti-list>
       </div>
     </vue-scroll>
     <div class="view-all">
-      <a class="mark-as-read">Xem tất cả thông báo</a>
+      <a class="mark-as-read" href="/notifications">Xem tất cả thông báo</a>
     </div>
   </div>
 </template>
 
 <script>
 import vuescroll from 'vuescroll'
-import Avatar from '../avatar/Avartar'
+import NotificationsList from './NotificationsList'
 export default {
   components: {
-    avatar: Avatar,
     'vue-scroll': vuescroll,
+    'noti-list': NotificationsList,
   },
   data() {
     return {
       ops: {
         rail: {
-          opacity: '0.2',
-          background: '#3d00553b',
-          border: '1px solid #3d00553b',
-          specifyBorderRadius: '5px',
+          opacity: '1',
+          background: '#fff',
+          border: 'none',
+          specifyBorderRadius: '0px',
           size: '15px',
           gutterOfSide: '0px',
           keepShow: false,
@@ -109,8 +69,19 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.down-arrow {
+  position: absolute;
+  margin-left: 5px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #fff;
+  top: -18px;
+  right: 43px;
+}
 .boxx {
-  max-height: 400px;
+  max-height: 600px;
   min-height: 200px;
   width: 350px;
 }
@@ -142,36 +113,16 @@ export default {
   vertical-align: middle;
   padding-top: 15px;
 }
-.avatar {
-  width: 80px;
-  display: flex;
-  flex-direction: row;
-}
-.unread {
-  position: relative;
-  top: 0;
-  left: -13px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #ff7070;
-  z-index: 999;
-}
+
 .list-notifications {
   max-height: 320px;
-  padding: 0 0 0 10px;
-  margin: 5px 0 5px 0;
+  padding: 0 0 0 0;
 }
-.noti {
-  height: auto;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-}
+
 .view-all {
   border-top: 1px solid rgba(68, 68, 68, 0.253);
   text-align: center;
-  padding: 10px 0 10px 0;
+  padding: 10px 0 0 0;
   color: #540474;
   font-weight: 200;
 }

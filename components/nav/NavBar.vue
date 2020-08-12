@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar class="nav-bg" type="is-primary" transparent>
+    <b-navbar class="nav-bg" type="is-primary" transparent :fixed-top="true">
       <template slot="brand">
         <b-navbar-item tag="router-link" :to="{ path: '/' }">
           <img class="logo" src="../../assets/images/logo.svg" />
@@ -23,6 +23,7 @@
           aria-role="list"
           animation="fade"
           position="is-bottom-left"
+          :max-height="400"
         >
           <badge slot="trigger" type="button" icon="bell" class="badge"></badge>
           <noti-box class="dropdown-item"></noti-box>
@@ -90,7 +91,8 @@ export default {
   display: none;
 }
 .nav-bg {
-  background-color: #540474;
+  background-color: #6b048c;
+  z-index: 9999;
 }
 .avatar {
   margin-top: 15px;

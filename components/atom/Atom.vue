@@ -102,7 +102,7 @@ export default {
   height: 7px;
   border-radius: 50%;
   background-color: rgb(209, 191, 191);
-  border: 0.02px solid #e35d51;
+  border: 0.02px solid #ff7070;
 }
 
 .animation {

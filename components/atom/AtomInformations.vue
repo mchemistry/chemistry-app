@@ -85,7 +85,7 @@ sup {
 .content {
   padding: 1.5rem;
   color: rgba(235, 235, 235, 0.911);
-  background: blueviolet;
+  background: #540474;
   margin-left: 5px;
   border-radius: 10px;
 }

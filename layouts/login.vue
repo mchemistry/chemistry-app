@@ -69,10 +69,10 @@ export default {
   height: 100vh;
   display: flex;
   flex-direction: row;
-  background-color: #f6f6f6;
+  background-color: #f1f1f1;
 }
 .bg-left {
-  background-color: #9b59b6;
+  background-color: #6b048c;
   width: 50%;
 }
 </style>

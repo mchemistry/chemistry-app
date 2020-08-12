@@ -99,8 +99,8 @@ export default {
   width: 100%;
 }
 path {
-  fill: #8e44ad;
-  stroke: #8e44ad;
+  fill: #6b048c;
+  stroke: #6b048c;
 }
 #T1 {
   animation: visible 2s ease 0.2s infinite;

@@ -66,7 +66,7 @@ export default {
   top: 50%;
 }
 .is-primary {
-  background-color: #7957d5;
+  background-color: #6b048c;
 }
 .is-success {
   background-color: hsl(141, 71%, 48%);
