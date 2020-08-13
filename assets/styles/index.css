@@ -11,6 +11,35 @@ html {
   box-sizing: border-box;
   overflow: auto;
 }
+.ripple {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  cursor: pointer;
+}
+
+.ripple::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform 0.5s, opacity 1s;
+}
+
+.ripple:active::after {
+  transform: scale(0, 0);
+  opacity: 0.3;
+  transition: 0s;
+}
 .dropdown-item {
   padding: 0;
 }
@@ -21,6 +50,12 @@ html {
 .page-enter,
 .page-leave-active {
   opacity: 0;
+}
+.b-skeleton > .b-skeleton-item {
+    background: -webkit-gradient(linear, left top, right top, color-stop(25%, #dbdbdb52), color-stop(50%, rgba(219, 219, 219, 0.1)), color-stop(75%, #dbdbdb)) !important;
+    background: linear-gradient(90deg, #dbdbdb4d 25%, rgba(219, 219, 219, 0.2) 50%, #dbdbdb4d 75%);
+    background-size: 400% 100%;
+    width: 100%;
 }
 @media screen and (min-width: 1024px){
   .navbar-dropdown a.navbar-item {

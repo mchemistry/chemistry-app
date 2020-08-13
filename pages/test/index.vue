@@ -1,15 +1,15 @@
 <template>
   <div>
-    <tabs></tabs>
+    <adu />
   </div>
 </template>
 
 <script>
-import Tabs from '../../components/tabs'
+import CardSkeleton from '../../components/skeleton/CardSkeleton'
 export default {
   layout: 'default',
   components: {
-    tabs: Tabs,
+    adu: CardSkeleton,
   },
 }
 </script>

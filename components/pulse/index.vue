@@ -11,8 +11,6 @@ export default {}
 
 <style scoped>
 #container {
-  margin-top: 120px;
-  margin-left: 130px;
   position: relative;
   background: #40453f;
 }
@@ -95,6 +93,35 @@ export default {}
   100% {
     -webkit-transform: scale(1);
     opacity: 0;
+  }
+}
+@media screen and (max-width: 850px) {
+  .pulse {
+    width: 6px;
+    height: 6px;
+    border: 3px solid #01ff4d;
+    top: -2.5px;
+    left: -3px;
+  }
+  .dot {
+    border: 6px solid #01ff4d;
+    background: transparent;
+    height: 30px;
+    width: 30px;
+    top: -15px;
+    left: -15px;
+  }
+}
+@media screen and (max-width: 670px) {
+  .pulse {
+    top: -3px;
+    left: -2.5px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .pulse {
+    top: -3px;
+    left: -3.5px;
   }
 }
 </style>

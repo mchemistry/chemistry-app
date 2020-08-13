@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar class="nav-bg" type="is-primary" transparent :fixed-top="true">
+    <b-navbar class="nav-bg" type="is-primary" transparent>
       <template slot="brand">
         <b-navbar-item tag="router-link" :to="{ path: '/' }">
           <img class="logo" src="../../assets/images/logo.svg" />
@@ -14,6 +14,7 @@
           icon="bell"
           title="THÔNG BÁO"
           class="notifications"
+          path="/notifications"
         ></nav-item>
       </template>
 
@@ -21,7 +22,7 @@
         <b-dropdown
           class="badge"
           aria-role="list"
-          animation="fade"
+          animation="ease-in-out"
           position="is-bottom-left"
           :max-height="400"
         >
@@ -33,7 +34,7 @@
           class="avatar"
           src-img="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p160x160/61827542_1137045079825001_383040469245886464_o.jpg?_nc_cat=105&_nc_sid=dbb9e7&_nc_ohc=rat3kGVuPJAAX99EO2I&_nc_ht=scontent.fhan2-4.fna&_nc_tp=6&oh=5b5143b1217c42439b9bb02915e0fb72&oe=5F5966FA"
         ></avatar>
-        <b-navbar-dropdown animation="fade" label="Tân Dv" right>
+        <b-navbar-dropdown animation label="Tân Dv" right>
           <nav-item
             :is-mobile="true"
             path="/auth/login"

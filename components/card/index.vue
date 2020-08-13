@@ -2,24 +2,22 @@
   <div class="card">
     <div class="card-image">
       <img
+        v-if="newEvent"
         src="../../assets/images/images/bookmark.png"
         alt="book mark"
         class="bookmark"
       />
       <figure class="image is-96x96">
-        <img
-          src="../../assets/chemistry-element/Este.png"
-          alt="Chemistry Element"
-        />
+        <img :src="imgEvent" alt="Chemistry Element" />
       </figure>
     </div>
     <div class="total-user is-small">
       <b-icon icon="account" class="icon-user" size="is-small"></b-icon>
-      <p class="total-user__join">1234</p>
+      <p class="total-user__join">{{ totalUserJoin }}</p>
     </div>
     <div class="hr"></div>
     <p class="card-title">
-      Este
+      {{ eventTitle }}
     </p>
     <p class="time-left">THỜI GIAN KẾT THÚC</p>
     <div class="time">
@@ -38,8 +36,10 @@
         <p class="fixed-time-text">Phút</p>
       </div>
     </div>
-    <div class="btn">
-      <b-button rounded class="button-start center">THAM GIA</b-button>
+    <div class="level">
+      <b-button rounded class="button-start mx-4 level-item ripple"
+        >THAM GIA</b-button
+      >
     </div>
   </div>
 </template>
@@ -47,6 +47,24 @@
 <script>
 export default {
   name: 'Card',
+  props: {
+    newEvent: {
+      type: Boolean,
+      default: false,
+    },
+    totalUserJoin: {
+      type: Number,
+      default: 0,
+    },
+    eventTitle: {
+      type: String,
+      default: 'Event Title',
+    },
+    imgEvent: {
+      type: String,
+      default: 'Este.png',
+    },
+  },
 }
 </script>
 
@@ -60,17 +78,14 @@ export default {
   order: 1;
 }
 .card {
-  margin-top: 100px;
-  margin-left: 100px;
   width: 220px;
-  height: 300px;
+  height: 325px;
   background-color: #3c0054;
   padding: 10px;
   border-radius: 8px;
   order: 10;
 }
 .card:hover {
-  margin-top: 97px;
   transition: all 0.3s;
 }
 .image {
@@ -88,7 +103,7 @@ export default {
   height: 25px;
   padding: 5px 10px 5px 10px;
   order: 2;
-  margin-top: 15px;
+  margin-top: 40px;
   border-top-left-radius: 1px;
   border-top-right-radius: 1px;
 }
@@ -154,9 +169,6 @@ export default {
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 }
 .button-start:hover {
   background-color: #de5d5d;

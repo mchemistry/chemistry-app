@@ -1,16 +1,13 @@
 <template>
   <div>
-    <div class="tabs is-medium">
-      <ul>
-        <li class="is-active">
-          <a class="tabs-title">Đang diễn ra</a>
-          <span class="down-arrow"></span>
-        </li>
-        <li>
-          <a>Sắp diễn ra</a>
-        </li>
-        <li>
-          <a>Đã kết thúc</a>
+    <div class="tabs is-medium is-fullwidth">
+      <ul v-for="(title, index) in titles" :key="index">
+        <li
+          class="tabs-item ripple"
+          :class="{ 'is-active': $route.fullPath === router[index] }"
+        >
+          <a :href="router[index]" class="tabs-title">{{ title }}</a>
+          <pulse v-if="title === 'Đang diễn ra'" class="live"></pulse>
         </li>
       </ul>
     </div>
@@ -18,28 +15,83 @@
 </template>
 
 <script>
-export default {}
+import Pulse from '../pulse'
+export default {
+  name: 'Tabs',
+  components: {
+    // eslint-disable-next-line vue/no-unused-components
+    pulse: Pulse,
+  },
+  data() {
+    return {
+      titles: ['Đang diễn ra', 'Sắp diễn ra', 'Đã kết thúc'],
+      router: [
+        '/challenges/live_event',
+        '/challenges/comming_soon',
+        '/challenges/challenges_over',
+      ],
+    }
+  },
+}
 </script>
 <style scoped>
-.container {
-  background: #3c0054;
-  margin-top: -55px;
+.live {
+  position: relative;
+  margin-bottom: 3px;
+  left: -30px;
 }
-.tabs-fixed {
-  background-color: #5d047e;
+.tabs ul {
+  border: none !important;
+}
+.tabs-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #5d047e !important;
+  color: white !important;
 }
 .is-active {
-  background-color: #540474;
+  background-color: #540474 !important;
   color: white !important;
+  transition: all 0.3s;
 }
 .tabs-title {
   color: white !important;
   font-weight: 500 !important;
+  width: 100%;
 }
-.down-arrow::before {
-  content: '';
-  border-top: 20px solid #c00;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
+@media screen and (max-width: 650px) {
+  .tabs-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #5d047e !important;
+    color: white !important;
+  }
+  .tabs-title {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .live {
+    margin-bottom: 0;
+  }
+  .is-active {
+    background-color: #540474 !important;
+    color: white !important;
+    transition: all 0.3s;
+  }
+}
+@media screen and (max-width: 580px) {
+  .live {
+    left: -13px;
+    top: -1px;
+  }
+  .is-active {
+    background-color: #540474 !important;
+    color: white !important;
+    transition: all 0.3s;
+  }
 }
 </style>
