@@ -16,28 +16,28 @@ html {
 
 /* Font weight property */
 .font-100 {
-  font-weight: 100;
+  font-weight: 100 !important;
 }
 .font-200 {
-  font-weight: 200;
+  font-weight: 200 !important;
 }
 .font-300 {
-  font-weight: 300;
+  font-weight: 300 !important;
 }
 .font-400 {
-  font-weight: 400;
+  font-weight: 400 !important;
 }
 .font-500 {
-  font-weight: 500;
+  font-weight: 500 !important;
 }
 .font-600 {
-  font-weight: 600;
+  font-weight: 600 !important;
 }
 .font-700 {
-  font-weight: 700;
+  font-weight: 700 !important;
 }
 .font-800 {
-  font-weight: 800;
+  font-weight: 800 !important;
 }
 /* --end font weight property */
 
@@ -104,6 +104,18 @@ html {
 
 .mt-3 {
   margin-top: 30px;
+}
+
+.mt-4 {
+  margin-top: 40px;
+}
+
+.mt-5 {
+  margin-top: 50px;
+}
+
+.mt-6 {
+  margin-top: 60px;
 }
 
 .mb-0 {
@@ -196,7 +208,7 @@ html {
 }
 
 .py-1{
-  padding: 10px 0;
+  padding: 10px 0 !important;
 }
 
 .py-2 {
@@ -622,11 +634,29 @@ b-4 {
     background-size: 400% 100%;
     width: 100%;
 }
+
+
+/*Side bar fix property */
+.sidebar-content {
+  background-color: #540474 !important;
+  z-index: 9999 !important;
+}
+
+.menu-label {
+  color: white;
+  font-size: 0.75em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.menu-list a {
+  border-radius: 0;
+  color: white;
+  display: block;
+}
+
 @media screen and (min-width: 1024px){
   .navbar-dropdown a.navbar-item {
-    padding: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
     margin-right: 10px;
     transition: color 200ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
     padding-right: 20px;
@@ -644,8 +674,9 @@ b-4 {
   }
 }
 @media only screen and (max-width: 1023px) {
-  .navbar-menu,.navbar-dropdown {
-    padding: 0 !important;
+  .nav-item {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
   }
   .navbar-dropdown .navbar-item {
     padding-right: 0;
@@ -675,5 +706,29 @@ b-4 {
   }
   .is-none-background {
     background-color: rgba(255, 255, 255, 0);
+  }
+
+  .card-header-title {
+    background: #540474;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 44px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 400;
+  }
+  .card-header-icon {
+    background: #540474;
+  }
+  .card-header-title:hover {
+    color: #ec4444;
+    transition: all 0.5s;
+  }
+  .card-header-icon:hover {
+    background: #540474 !important;
+    color: white !important;
+  }
+  .collapse {
+    box-shadow: none !important;
   }
 }

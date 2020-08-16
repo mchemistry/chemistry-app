@@ -3,7 +3,7 @@
     <div
       v-if="type === 'hexagon'"
       id="loaderSvgWrapper"
-      :class="[isLoginPage ? 'fixed-loading' : '']"
+      :class="[$route.fullPath === 'auth/login' ? 'fixed-loading' : '']"
     >
       <svg
         id="preLoader"
@@ -87,16 +87,6 @@ export default {
     type: {
       type: String,
       default: 'hexagon',
-    },
-  },
-  computed: {
-    isLoginPage() {
-      const name = this.$route.name + ''
-      const check = name.split('-')
-      // eslint-disable-next-line no-console
-      console.log(check[1] === 'login')
-      if (check[1] === 'login') return true
-      return false
     },
   },
 }

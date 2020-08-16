@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-navbar
-      class="is-primary is-none-background"
+      class="is-primary is-none-background is-hidden-touch"
       type="is-primary"
       transparent
       style="z-index: 9999;"

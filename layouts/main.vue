@@ -1,18 +1,22 @@
 <template>
   <div class="is-primary is-full-height-screen">
     <nav-bar></nav-bar>
-    <nuxt />
+    <side-bar />
+    <nuxt class="mt-5 fixed-mobile" />
     <b-footer />
   </div>
 </template>
 <script>
 import NavBar from '../components/nav/NavBar'
+import SideBar from '../components/nav/SideBar'
 import Footer from '../components/footer'
+
 export default {
   components: {
     // eslint-disable-next-line vue/no-unused-components
     'nav-bar': NavBar,
     'b-footer': Footer,
+    'side-bar': SideBar,
   },
   data() {
     return {
@@ -50,3 +54,11 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+@media only screen and (min-width: 1024px) {
+  .fixed-mobile {
+    margin-top: 0 !important;
+  }
+}
+</style>

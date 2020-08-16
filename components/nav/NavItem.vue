@@ -3,8 +3,8 @@
     <b-navbar-item
       tag="router-link"
       :to="path"
-      class="nav-item"
-      :class="{ active: isActive }"
+      class="nav-item ripple"
+      :class="[{ active: isActive }, { p30: subNav }]"
     >
       <b-icon
         v-if="isMobile"
@@ -12,7 +12,7 @@
         class="media-left icon"
         :icon="icon"
       ></b-icon>
-      <p>{{ title }}</p></b-navbar-item
+      <p class="">{{ title }}</p></b-navbar-item
     >
   </div>
 </template>
@@ -40,10 +40,21 @@ export default {
       type: String,
       default: '/',
     },
+    subNav: {
+      type: Boolean,
+      default: false,
+    },
   },
 }
 </script>
 <style lang="css" scoped>
+.p30 {
+  padding-left: 30px !important;
+}
+.p30:hover {
+  padding-left: 35px !important;
+  transition: all 0.5s;
+}
 .nav-item {
   font-weight: 500;
   display: flex;
@@ -71,14 +82,14 @@ export default {
   background: #ff7070;
 }
 .nav-item:hover {
-  color: #ff7070;
+  color: #ff5353;
   transition: all 0.5s;
 }
 .nav-item:hover::after {
   width: 100%;
 }
 .active {
-  color: #ff7070;
+  color: #ff5353;
 }
 @media only screen and (max-width: 1023px) {
   .icon {
@@ -96,7 +107,7 @@ export default {
   }
   .nav-item:hover {
     background: #51046f;
-    color: #ff7070;
+    color: #ff5353;
     padding-left: 20px;
   }
   .nav-item::after {
