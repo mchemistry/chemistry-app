@@ -1,23 +1,30 @@
 <template>
-  <div class="page-404">
-    <h1 class="text-404">{{ error.statusCode }}</h1>
+  <div class="py-3 has-background-white" style="height: 100vh;">
+    <h1 class="has-text-centered font-800 primary" style="font-size: 100px;">
+      {{ error.statusCode }}
+    </h1>
     <div class="container">
       <img
-        class="image-404"
+        class="m0-auto"
+        style="width: 40%; display: block;"
         src="https://cdn.dribbble.com/users/1162077/screenshots/3779301/complexity.png"
         alt="image-404"
       />
     </div>
     <div>
-      <p class="text-suggest">
-        <strong>OPPS !</strong>
+      <p class="has-text-centered mt-1 primary">
+        <strong class="primary">OPPS !</strong>
         Trang bạn tìm kiếm không tồn tại, bấm nút bên dưới để quay về trang chủ
         !
       </p>
     </div>
-    <div class="buttons">
-      <b-button icon-left="arrow-left" class="center" rounded>
-        <nuxt-link to="/">Quay về trang chủ</nuxt-link>
+    <div class="mt-2 buttons">
+      <b-button
+        icon-left="arrow-left"
+        class="m0-auto has-text-white btn-secondary"
+        rounded
+      >
+        <nuxt-link to="/" class="has-text-white">Quay về trang chủ</nuxt-link>
       </b-button>
     </div>
   </div>
@@ -54,33 +61,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.page_404 {
-  padding: 40px 0;
-  background: #fff;
-  font-family: 'Arvo', serif;
-}
-.text-404 {
-  text-align: center;
-  font-size: 100px;
-  font-weight: bold;
-}
-.image-404 {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
-}
-.text-suggest {
-  text-align: center;
-  font-size: 18px;
-  margin-top: 10px;
-}
-.buttons {
-  width: 100%;
-}
-.center {
-  margin: 20px auto;
-}
-</style>

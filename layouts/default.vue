@@ -1,17 +1,11 @@
 <template>
-  <div class="default-layout">
+  <div class="is-primary" style="min-height: 100vh;">
     <nuxt />
   </div>
 </template>
 
 <script>
-export default {}
-</script>
-
-<style scoped>
-.default-layout {
-  background-color: #6b048c;
-  min-height: 100vh;
-  max-height: auto;
+export default {
+  name: 'Default',
 }
-</style>
+</script>

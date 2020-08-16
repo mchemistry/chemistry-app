@@ -7,7 +7,7 @@
         class="none-border-bottom-radius"
       ></b-skeleton>
     </div>
-    <div class="item-center flex-row mt-1" style="width: 50px; heigt: 25px;">
+    <div class="item-center flex-row mt-1" style="width: 50px; height: 25px;">
       <b-skeleton height="24px" width="49px" :rounded="false"></b-skeleton>
     </div>
     <hr class="hr is-relative p-0 mx-1 mb-1" style="top: -0.1px;" />

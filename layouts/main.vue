@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page">
+  <div class="is-primary is-full-height-screen">
     <nav-bar></nav-bar>
     <nuxt />
     <b-footer />
@@ -50,10 +50,3 @@ export default {
   },
 }
 </script>
-<style scoped>
-.home-page {
-  min-height: 100vh;
-  background-color: #6b048c;
-  max-height: auto;
-}
-</style>

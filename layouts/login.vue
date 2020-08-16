@@ -1,8 +1,8 @@
 <template>
-  <div class="bg-login">
+  <div class="is-full-height-screen is-flex flex-row">
     <img class="logo" src="../assets/images/logo-clabs.svg" alt="logo-clabs" />
     <client-only>
-      <div class="bg-left is-hidden-touch">
+      <div class="is-primary is-flex flex-row is-full-width is-hidden-touch">
         <Atom :sub-element="subElement" :data="arrMargin" :radius="radius" />
         <AtomInformations
           :element="subElement.name"
@@ -14,7 +14,7 @@
         />
       </div>
     </client-only>
-    <div class="bg-right">
+    <div class="item-center is-full-width has-background-white-bis bg-right">
       <nuxt />
     </div>
   </div>
@@ -63,25 +63,7 @@ export default {
   bottom: 10px;
   width: 49.5%;
 }
-.bg-login {
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
-  background-color: #f1f1f1;
-}
-.bg-left {
-  background-color: #6b048c;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-}
-.bg-right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background-color: whitesmoke;
-}
+
 @media screen and (max-width: 1023px) {
   .bg-right {
     background-color: #8616ac;
