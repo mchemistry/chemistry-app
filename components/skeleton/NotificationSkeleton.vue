@@ -1,6 +1,6 @@
 <template>
   <div>
-    <article class="media" style="margin-top: 10px;">
+    <article class="media" style="margin-top: 15px;">
       <figure class="media-left">
         <p class="image is-48x48">
           <b-skeleton circle width="48px" height="48px"></b-skeleton>

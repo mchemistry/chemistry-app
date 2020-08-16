@@ -1,6 +1,6 @@
 <template>
   <div class="badge">
-    <b-icon class="icon-badge" :icon="icon"></b-icon>
+    <b-icon v-if="hasIcon" class="icon-badge" :icon="icon"></b-icon>
     <b-tag v-if="totalNotifications !== 0" class="b-tag-badge" is-small>{{
       totalNotifications
     }}</b-tag>
@@ -17,6 +17,10 @@ export default {
     totalNotifications: {
       type: Number,
       default: 1,
+    },
+    hasIcon: {
+      type: Boolean,
+      default: true,
     },
   },
 }

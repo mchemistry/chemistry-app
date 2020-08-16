@@ -1,10 +1,8 @@
 <template>
-  <div class="card">
+  <div class="card is-primary-darker m0-auto">
     <ValidationObserver ref="observer" v-slot="{ invalid }">
-      <!-- the "passes" function on the slot-scope only chains if the validation is successfull -->
-      <!-- Making it easier to call directly in the template than to call `passes` on the observer component -->
-      <section class="section custom-field">
-        <p class="title">{{ title }}</p>
+      <section class="is-flex flex-column m0-auto mt-2" style="width: 280px;">
+        <p class="title-big">{{ title }}</p>
         <BInputWithValidation
           v-model="email"
           rounded
@@ -24,6 +22,7 @@
           label="Tên tài khoản"
           placeholder="Nhập vào tên tài khoản..."
           icon="account"
+          class="mt-1"
         />
         <BInputWithValidation
           v-model="password"
@@ -36,12 +35,13 @@
           vid="password"
           placeholder="Nhập vào mật khẩu..."
           icon="lock"
+          class="mt-1"
         />
         <div class="level-right">
           <nuxt-link
             v-if="!isRegisterPage"
             to="/auth/password_reset"
-            class="forgot-password link-to-signup"
+            class="forgot-password link"
             >Quên mật khẩu ?</nuxt-link
           >
         </div>
@@ -56,40 +56,39 @@
           label="Nhập lại mật khẩu"
           placeholder="Nhập lại mật khẩu..."
           icon="lock"
+          class="mt-1 mb-1"
         />
         <b-button
           v-if="!isSubmit"
           :disabled="invalid"
-          class="is-primary btn-login"
+          class="btn-secondary ripple mt-1 none-border"
           rounded
+          :class="{ 'mt-2': isRegisterPage }"
           @click="isRegisterPage ? signup() : login()"
           >{{ title }}</b-button
         >
-        <Loading v-if="isSubmit"></Loading>
-        <p v-if="!isRegisterPage" class="or">Hoặc</p>
-        <div v-if="!isRegisterPage" class="social">
-          <img
-            src="../../static/icons/facebook.png"
+        <loader v-if="isSubmit"></loader>
+        <p v-if="!isRegisterPage" class="mt-1 has-text-centered white">Hoặc</p>
+        <div v-if="!isRegisterPage" class="is-flex flex-row item-center mt-1">
+          <img-social
+            :src-img="require('~/static/icons/facebook.png')"
             alt="facebook"
-            class="social-img"
+            :size="36"
+            class="mr-1"
           />
-          <img
-            src="../../static/icons/google-plus.png"
+          <img-social
+            :src-img="require('~/static/icons/google-plus.png')"
             alt="google"
-            class="social-img"
+            :size="36"
           />
         </div>
-        <p v-if="!isRegisterPage" class="to-signup">
-          Chưa có tài khoản ?
-          <nuxt-link to="/auth/register" class="link-to-signup"
-            >Đăng ký</nuxt-link
-          >
+        <p v-if="!isRegisterPage" class="mt-1 mb-2 has-text-centered white">
+          Chưa có tài khoản ?&nbsp;&nbsp;
+          <nuxt-link to="/auth/register" class="link">Đăng ký</nuxt-link>
         </p>
-        <p v-if="isRegisterPage" class="to-signup">
-          Đã có tài khoản ?
-          <nuxt-link to="/auth/login" class="link-to-signup"
-            >Đăng nhập</nuxt-link
-          >
+        <p v-if="isRegisterPage" class="mt-1 mb-2 has-text-centered white">
+          Đã có tài khoản ?&nbsp;&nbsp;
+          <nuxt-link to="/auth/login" class="link">Đăng nhập</nuxt-link>
         </p>
       </section>
     </ValidationObserver>
@@ -100,13 +99,15 @@
 import { ValidationObserver } from 'vee-validate'
 import BInputWithValidation from '../inputs/BInputWithValidation'
 import Loading from '../loading/Loading'
+import Avatar from '../avatar'
 
 export default {
   name: 'FormLogin',
   components: {
     ValidationObserver,
     BInputWithValidation,
-    Loading,
+    loader: Loading,
+    'img-social': Avatar,
   },
   // eslint-disable-next-line vue/require-prop-types
   props: {
@@ -165,71 +166,11 @@ export default {
 
 <style scoped>
 .card {
-  position: absolute;
-  top: 50%;
-  left: 75%;
-  transform: translateX(-50%) translateY(-50%);
-  z-index: 10000000;
-  background-color: white;
   width: 350px;
   height: auto;
   border-radius: 15px;
   -webkit-box-shadow: 4px 10px 15px 1px #000;
   -moz-box-shadow: 4px 10px 15px 1px rgba(0, 0, 0, 0.418);
   box-shadow: 4px 10px 15px 1px rgba(0, 0, 0, 0.42);
-}
-.section {
-  display: flex;
-  flex-direction: column;
-}
-.title {
-  font-size: 25px;
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  color: #6b048c;
-}
-.custom-field {
-  width: 280px;
-  margin: 0 auto;
-  margin-top: 20px;
-  padding: 1px;
-}
-.forgot-password {
-  margin-top: 5px;
-  float: right;
-  text-align: right;
-}
-.btn-login {
-  width: 100%;
-  margin-top: 15px;
-}
-.or {
-  text-align: center;
-  margin-top: 10px;
-}
-.social-img {
-  width: 40px;
-  height: 40px;
-}
-.social {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 90px;
-  margin: 0 auto;
-  margin-top: 10px;
-}
-.to-signup {
-  margin-top: 15px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-.link-to-signup {
-  color: #6b048c;
-}
-.link-to-signup:hover {
-  color: #ff7070;
-  transition: all 0.5s;
 }
 </style>

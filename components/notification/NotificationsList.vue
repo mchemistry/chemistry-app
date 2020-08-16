@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import Avatar from '../avatar/Avartar'
+import Avatar from '../avatar'
 export default {
   components: {
     avatar: Avatar,

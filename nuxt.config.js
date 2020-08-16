@@ -1,4 +1,8 @@
 export default {
+  server: {
+    port: 8000, // default: 3000
+    host: '192.168.1.105', // default: localhost
+  },
   /*
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
@@ -36,11 +40,6 @@ export default {
         rel: 'stylesheet',
         href:
           'https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500&display=swap',
-      },
-      {
-        rel: 'stylesheet',
-        href:
-          'https://fonts.googleapis.com/css2?family=Varela+Round&display=swap',
       },
       {
         rel: 'stylesheet',
@@ -82,7 +81,7 @@ export default {
    */
   modules: [
     // Doc: https://buefy.github.io/#/documentation
-    ['nuxt-buefy', { materialDesignIcons: false }],
+    ['nuxt-buefy'],
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
@@ -101,5 +100,12 @@ export default {
   },
   rules: {
     'at-rule-no-unknown': null,
+  },
+  /*
+   ** Buefy Options
+   */
+  buefy: {
+    materialDesignIcons: false,
+    css: true,
   },
 }

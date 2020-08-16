@@ -36,9 +36,9 @@
         <p class="fixed-time-text">Phút</p>
       </div>
     </div>
-    <div class="level">
-      <b-button rounded class="button-start mx-4 level-item ripple"
-        >THAM GIA</b-button
+    <div class="join-button">
+      <b-button rounded class="btn-secondary none-border ripple mt-1 w-2"
+        >BẮT ĐẦU</b-button
       >
     </div>
   </div>
@@ -79,7 +79,7 @@ export default {
 }
 .card {
   width: 220px;
-  height: 325px;
+  height: 335px;
   background-color: #3c0054;
   padding: 10px;
   border-radius: 8px;
@@ -146,29 +146,11 @@ export default {
   font-weight: 100;
   font-size: 12px;
 }
-.btn {
+.join-button {
   width: 100%;
   display: flex;
-}
-.button-start {
-  height: 34px;
-  padding: 0 20px;
-  font-size: 12px;
-  min-width: 90px;
-  max-width: 100%;
-  font-weight: 500;
-  text-transform: none;
-  margin: 0 auto;
-  width: 80px;
-  color: #fff;
-  background-color: #ff7070;
-  border: 1px solid #ff7070;
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 1px 5px 0 rgba(0, 0, 0, 0.12);
-  margin-top: 5px;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  align-items: center;
+  justify-content: center;
 }
 .button-start:hover {
   background-color: #de5d5d;

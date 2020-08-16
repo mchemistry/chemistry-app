@@ -2,7 +2,7 @@
   <div>
     <div
       :style="{ size: size }"
-      :class="{ special: special }"
+      :class="{ 'has-text-white': special }"
       v-html="convertConfiguation(configuration)"
     ></div>
   </div>
@@ -60,12 +60,3 @@ export default {
   },
 }
 </script>
-
-<style lang="css" scoped>
-.special {
-  color: white;
-}
-.is {
-  color: #ef8a00 !important;
-}
-</style>

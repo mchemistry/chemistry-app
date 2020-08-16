@@ -1,11 +1,19 @@
 <template>
-  <div class="card">
+  <div class="card is-primary-darker">
     <ValidationObserver ref="observer" v-slot="{ invalid }">
       <!-- the "passes" function on the slot-scope only chains if the validation is successfull -->
       <!-- Making it easier to call directly in the template than to call `passes` on the observer component -->
-      <section class="section custom-field">
-        <p class="title">Thay đổi mật khẩu</p>
-        <img :src="imgAvatar" alt="avatar" class="avatar" />
+      <section
+        class="is-flex flex-column m0-auto mt-2 mb-3 p-0"
+        style="width: 280px;"
+      >
+        <p class="title-big">Thay đổi mật khẩu</p>
+        <avatar
+          :src-img="'https://image.flaticon.com/icons/svg/3231/3231474.svg'"
+          :size="40"
+          class="m0-auto mb-2"
+          alt="avatar"
+        />
         <Information
           v-if="success"
           type="success"
@@ -34,12 +42,13 @@
           label="Nhập lại mật khẩu"
           placeholder="Nhập lại mật khẩu..."
           icon="lock"
+          class="mt-1"
         />
         <b-button
           v-if="!isLoading"
           :disabled="invalid"
           :icon-left="success ? 'arrow-left' : ''"
-          class="is-primary btn-login"
+          class="btn-secondary mt-2 mb-2 none-border"
           rounded
           @click="success ? gotoLogin() : resetPassword()"
           >{{ textButton }}</b-button
@@ -55,6 +64,7 @@ import { ValidationObserver } from 'vee-validate'
 import BInputWithValidation from '../inputs/BInputWithValidation'
 import Information from '../information/Information'
 import Loading from '../loading/Loading'
+import Avatar from '../avatar'
 
 export default {
   name: 'FormLogin',
@@ -63,6 +73,7 @@ export default {
     BInputWithValidation,
     Loading,
     Information,
+    avatar: Avatar,
   },
   props: {
     isExpired: {
@@ -104,51 +115,11 @@ export default {
 
 <style scoped>
 .card {
-  position: absolute;
-  top: 50%;
-  left: 75%;
-  transform: translateX(-50%) translateY(-50%);
-  z-index: 10000000;
-  background-color: white;
   width: 350px;
   height: auto;
   border-radius: 15px;
   -webkit-box-shadow: 4px 10px 15px 1px #000;
   -moz-box-shadow: 4px 10px 15px 1px rgba(0, 0, 0, 0.418);
   box-shadow: 4px 10px 15px 1px rgba(0, 0, 0, 0.42);
-}
-.section {
-  display: flex;
-  flex-direction: column;
-}
-.title {
-  font-size: 25px;
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  color: #6b048c;
-}
-.custom-field {
-  width: 280px;
-  margin: 0 auto;
-  margin-top: 20px;
-  padding: 1px;
-  margin-bottom: 40px;
-}
-.avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 1px solid violet;
-  margin: 0 auto;
-  margin-top: -10px;
-  margin-bottom: 20px;
-}
-.btn-login {
-  width: 100%;
-  margin-top: 15px;
-}
-.hide {
-  display: none;
 }
 </style>

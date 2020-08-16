@@ -33,7 +33,7 @@ export default {
   },
   data() {
     return {
-      media: 4,
+      media: 6,
       loading: false,
     }
   },
@@ -77,6 +77,7 @@ export default {
     text-align: center;
     margin: 0 auto;
     font-size: 26px;
+    padding-top: 15px;
   }
   .container {
     margin: 40px !important;

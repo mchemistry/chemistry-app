@@ -3,14 +3,14 @@
     <div class="columns is-8">
       <div class="column">Element : {{ element }}</div>
       <div class="column">
-        Symbol : <strong class="sum">{{ symbol }}</strong>
+        Symbol : <strong class="white font-400">{{ symbol }}</strong>
       </div>
     </div>
     <div class="columns is-8">
       <div class="column">
         <ElectronProperties :configuration="configuration" />
       </div>
-      <div class="column phase">
+      <div class="column is-flex flex-row">
         <p>Phase :</p>
         <img
           v-if="phase === 'Gas'"
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="content is-small">
-      <h1 class="sum">Summary</h1>
+      <h1 class="content-summary">Summary</h1>
       <p class="is-white">
         <span class="element">{{ summary.split(' ')[0] }} - </span
         >{{ summary.split(' ').slice(1).join(' ') }}
@@ -75,26 +75,16 @@ export default {
 </script>
 
 <style scoped>
-sup {
-  margin-left: -5px;
-}
-.element {
-  color: white;
-  font-weight: bold;
-}
 .content {
   padding: 1.5rem;
-  color: rgba(235, 235, 235, 0.911);
+  color: rgba(235, 235, 235, 0.9);
   background: #540474;
   margin-left: 5px;
   border-radius: 10px;
 }
-.sum {
+.content-summary {
   color: rgba(235, 235, 235, 0.911);
   padding-bottom: 5px;
-}
-
-.content .sum {
   border-bottom: 1px solid rgba(235, 235, 235, 0.568);
 }
 .column {
@@ -102,10 +92,7 @@ sup {
   color: rgba(235, 235, 235, 0.911);
   padding-left: 30px;
 }
-.phase {
-  display: flex;
-  flex-direction: row;
-}
+
 .icon-phase {
   width: 26px;
   height: 26px;

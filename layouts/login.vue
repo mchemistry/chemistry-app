@@ -1,12 +1,8 @@
 <template>
   <div class="bg-login">
+    <img class="logo" src="../assets/images/logo-clabs.svg" alt="logo-clabs" />
     <client-only>
-      <div class="bg-left">
-        <img
-          class="logo"
-          src="../assets/images/logo-clabs.svg"
-          alt="logo-clabs"
-        />
+      <div class="bg-left is-hidden-touch">
         <Atom :sub-element="subElement" :data="arrMargin" :radius="radius" />
         <AtomInformations
           :element="subElement.name"
@@ -18,7 +14,9 @@
         />
       </div>
     </client-only>
-    <nuxt />
+    <div class="bg-right">
+      <nuxt />
+    </div>
   </div>
 </template>
 <script>
@@ -73,6 +71,20 @@ export default {
 }
 .bg-left {
   background-color: #6b048c;
-  width: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.bg-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: whitesmoke;
+}
+@media screen and (max-width: 1023px) {
+  .bg-right {
+    background-color: #8616ac;
+  }
 }
 </style>

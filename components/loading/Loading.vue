@@ -1,73 +1,94 @@
 <template>
-  <div id="loaderSvgWrapper" :class="[isLoginPage ? 'fixed-loading' : '']">
-    <svg
-      id="preLoader"
-      xmlns:svg="http://www.w3.org/2000/svg"
-      viewBox="0 0 100 100"
-      width="100px"
-      height="100px"
+  <div>
+    <div
+      v-if="type === 'hexagon'"
+      id="loaderSvgWrapper"
+      :class="[isLoginPage ? 'fixed-loading' : '']"
     >
-      <path
-        id="T1"
-        style="
-          stroke-width: 0.26458332px;
-          stroke-linecap: butt;
-          stroke-linejoin: miter;
-        "
-        d="m 58.26475,43.628481 15.7247,-27.287018 -31.4936,0.02553 z"
-      />
-      <path
-        id="T2"
-        style="
-          stroke-width: 0.26458332px;
-          stroke-linecap: butt;
-          stroke-linejoin: miter;
-        "
-        d="m 58.26475,43.628481 31.4936,-0.02553 -15.7689,-27.261492 z"
-      />
-      <path
-        id="T3"
-        style="
-          stroke-width: 0.26458332px;
-          stroke-linecap: butt;
-          stroke-linejoin: miter;
-        "
-        d="M 58.26475,43.628481 74.03365,70.88997 89.75835,43.602954 Z"
-      />
-      <path
-        id="T4"
-        style="
-          stroke-width: 0.26458332px;
-          stroke-linecap: butt;
-          stroke-linejoin: miter;
-        "
-        d="M 58.26475,43.628481 42.54006,70.915503 74.03365,70.889973 Z"
-      />
-      <path
-        id="T5"
-        style="
-          stroke-width: 0.26458332px;
-          stroke-linecap: butt;
-          stroke-linejoin: miter;
-        "
-        d="m 58.26475,43.628481 -31.49359,0.02553 15.7689,27.261491 z"
-      />
-      <path
-        id="T6"
-        style="
-          stroke-width: 0.26458332px;
-          stroke-linecap: butt;
-          stroke-linejoin: miter;
-        "
-        d="M 58.26475,43.628481 42.49585,16.366995 26.77116,43.654011 Z"
-      />
-    </svg>
+      <svg
+        id="preLoader"
+        xmlns:svg="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 100"
+        width="100px"
+        height="100px"
+      >
+        <path
+          id="T1"
+          style="
+            stroke-width: 0.26458332px;
+            stroke-linecap: butt;
+            stroke-linejoin: miter;
+          "
+          d="m 58.26475,43.628481 15.7247,-27.287018 -31.4936,0.02553 z"
+        />
+        <path
+          id="T2"
+          style="
+            stroke-width: 0.26458332px;
+            stroke-linecap: butt;
+            stroke-linejoin: miter;
+          "
+          d="m 58.26475,43.628481 31.4936,-0.02553 -15.7689,-27.261492 z"
+        />
+        <path
+          id="T3"
+          style="
+            stroke-width: 0.26458332px;
+            stroke-linecap: butt;
+            stroke-linejoin: miter;
+          "
+          d="M 58.26475,43.628481 74.03365,70.88997 89.75835,43.602954 Z"
+        />
+        <path
+          id="T4"
+          style="
+            stroke-width: 0.26458332px;
+            stroke-linecap: butt;
+            stroke-linejoin: miter;
+          "
+          d="M 58.26475,43.628481 42.54006,70.915503 74.03365,70.889973 Z"
+        />
+        <path
+          id="T5"
+          style="
+            stroke-width: 0.26458332px;
+            stroke-linecap: butt;
+            stroke-linejoin: miter;
+          "
+          d="m 58.26475,43.628481 -31.49359,0.02553 15.7689,27.261491 z"
+        />
+        <path
+          id="T6"
+          style="
+            stroke-width: 0.26458332px;
+            stroke-linecap: butt;
+            stroke-linejoin: miter;
+          "
+          d="M 58.26475,43.628481 42.49585,16.366995 26.77116,43.654011 Z"
+        />
+      </svg>
+    </div>
+    <div v-if="type === '3dot'" id="dot-loading">
+      <div class="graph">
+        <div>
+          <div class="dot loading"></div>
+          <div class="dot loading loading-2"></div>
+          <div class="dot loading loading-3"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Loading',
+  props: {
+    type: {
+      type: String,
+      default: 'hexagon',
+    },
+  },
   computed: {
     isLoginPage() {
       const name = this.$route.name + ''
@@ -82,6 +103,8 @@ export default {
 </script>
 
 <style lang="css" scoped>
+/** STYLE FOR HEXAGON LOADING */
+
 #loaderSvgWrapper {
   background: transparent;
   z-index: 99;
@@ -99,8 +122,8 @@ export default {
   width: 100%;
 }
 path {
-  fill: #6b048c;
-  stroke: #6b048c;
+  fill: #ec4444;
+  stroke: #ec4444;
 }
 #T1 {
   animation: visible 2s ease 0.2s infinite;
@@ -133,5 +156,53 @@ path {
     opacity: 1;
     stroke-opacity: 1;
   }
+}
+
+/** STYLE FOR DOT LOADING */
+
+.graph {
+  background-color: transparent;
+  border-radius: 4px;
+  height: 250px;
+  margin: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot {
+  background-color: #ec4444;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  margin: 0 0.25rem;
+  display: inline-block;
+}
+
+@keyframes blinks {
+  0% {
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.loading {
+  animation-name: blinks;
+  animation-duration: 1.4s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+.loading-2 {
+  animation-delay: 0.2s;
+}
+
+.loading-3 {
+  animation-delay: 0.4s;
 }
 </style>

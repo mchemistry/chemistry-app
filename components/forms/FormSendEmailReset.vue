@@ -1,18 +1,21 @@
 <template>
-  <div class="card">
+  <div class="card is-primary-darker">
     <ValidationObserver ref="observer" v-slot="{ invalid }">
       <!-- the "passes" function on the slot-scope only chains if the validation is successfull -->
       <!-- Making it easier to call directly in the template than to call `passes` on the observer component -->
-      <section class="section custom-field">
-        <p class="title">Khôi phục mật khẩu</p>
+      <section
+        class="is-flex flex-column m0-auto p-0 mt-2 mb-3"
+        style="width: 360px;"
+      >
+        <p class="title-big">Khôi phục mật khẩu</p>
         <b-icon
-          class="icon-password"
+          class="m0-auto has-text-white"
           icon="lock"
           size="is-large"
           type="is-primary"
         >
         </b-icon>
-        <Information :message="message" :type="type"></Information>
+        <Information :message="message" :type="type" class="mt-2"></Information>
         <BInputWithValidation
           v-if="success === null"
           v-model="email"
@@ -26,7 +29,7 @@
           v-if="!isLoading"
           :icon-left="success === null ? '' : 'arrow-left'"
           :disabled="success === null ? invalid : false"
-          class="is-primary btn-login"
+          class="btn-secondary none-border mt-2 mb-3"
           rounded
           @click="
             success === null
@@ -37,7 +40,7 @@
           "
           >{{ textButton }}</b-button
         >
-        <Loading v-if="isLoading"></Loading>
+        <Loading v-if="isLoading" class="mb-2"></Loading>
       </section>
     </ValidationObserver>
   </div>
@@ -71,7 +74,7 @@ export default {
       setTimeout(() => {
         this.isLoading = false
         this.success = true
-        this.type = 'success'
+        this.type = 'danger'
         this.textButton = 'Quay về trang đăng nhập'
         this.message = `Chúng tôi vừa gửi cho bạn một đường link khôi phục mật khẩu vào emai ${this.email}. Nếu không nhận được đường link khôi phục, vui lòng kiểm tra tại thư mục spam.`
         // this.$buefy.toast.open({
@@ -98,48 +101,11 @@ export default {
 
 <style scoped>
 .card {
-  position: absolute;
-  top: 50%;
-  left: 75%;
-  transform: translateX(-50%) translateY(-50%);
-  z-index: 10000000;
-  background-color: white;
   width: 400px;
   height: auto;
   border-radius: 15px;
   -webkit-box-shadow: 4px 10px 15px 1px #000;
   -moz-box-shadow: 4px 10px 15px 1px rgba(0, 0, 0, 0.418);
   box-shadow: 4px 10px 15px 1px rgba(0, 0, 0, 0.42);
-}
-.section {
-  display: flex;
-  flex-direction: column;
-}
-.hide {
-  display: none;
-}
-.icon-password {
-  width: 100%;
-  margin: 0 auto;
-  margin-bottom: 40px;
-  margin-top: -8px;
-}
-.title {
-  font-size: 25px;
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  color: #6b048c;
-}
-.custom-field {
-  width: 360px;
-  margin: 0 auto;
-  margin-top: 20px;
-  padding: 1px;
-  margin-bottom: 40px;
-}
-.btn-login {
-  width: 100%;
-  margin-top: 15px;
 }
 </style>

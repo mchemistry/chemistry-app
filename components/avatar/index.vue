@@ -3,19 +3,20 @@
     <img
       :src="srcImg"
       alt="avatar"
-      class="avatar"
-      :style="{ width: size + 'px', height: size + 'px' }"
+      class="is-rounded"
+      :style="{ width: size + 'px !important', height: size + 'px !important' }"
     />
   </div>
 </template>
 
 <script>
 export default {
+  name: 'Avatar',
   props: {
     srcImg: {
       type: String,
       default:
-        'https://pmcvariety.files.wordpress.com/2018/09/cavill-2.jpg?w=600',
+        'https://decider.com/wp-content/uploads/2020/03/sonic-the-hedgehog.jpg?quality=90&strip=all&w=646&h=431&crop=1',
     },
     size: {
       type: Number,
@@ -24,9 +25,3 @@ export default {
   },
 }
 </script>
-
-<style lang="css" scoped>
-.avatar {
-  border-radius: 50%;
-}
-</style>

@@ -2,14 +2,17 @@
   <div class="home-page">
     <nav-bar></nav-bar>
     <nuxt />
+    <b-footer />
   </div>
 </template>
 <script>
 import NavBar from '../components/nav/NavBar'
+import Footer from '../components/footer'
 export default {
   components: {
     // eslint-disable-next-line vue/no-unused-components
     'nav-bar': NavBar,
+    'b-footer': Footer,
   },
   data() {
     return {

@@ -6,11 +6,12 @@
         : type === 'success'
         ? 'is-success'
         : 'is-primary',
-      'information',
     ]"
+    class="p-1 mb-2 is-flex flex-row"
+    style="border-radius: 10px;"
   >
     <b-icon
-      :class="[type === '' ? 'hide' : '', 'icon-information']"
+      :class="[type === '' ? 'is-hidden' : '', 'icon-information']"
       :icon="type === 'danger' ? 'exclamation' : 'check'"
       size="is-medium"
       :type="
@@ -42,16 +43,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.information {
-  padding: 8px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: row;
-}
-.hide {
-  display: none;
-}
 .message {
   color: white;
   background-color: transparent;
@@ -64,14 +55,5 @@ export default {
   margin-right: 10px;
   height: 100%;
   top: 50%;
-}
-.is-primary {
-  background-color: #6b048c;
-}
-.is-success {
-  background-color: hsl(141, 71%, 48%);
-}
-.is-danger {
-  background-color: hsl(348, 100%, 61%);
 }
 </style>

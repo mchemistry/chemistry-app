@@ -6,7 +6,12 @@
           class="tabs-item ripple"
           :class="{ 'is-active': $route.fullPath === router[index] }"
         >
-          <a :href="router[index]" class="tabs-title">{{ title }}</a>
+          <a
+            :href="router[index]"
+            class="tabs-title not-active"
+            :class="{ 'is-active': $route.fullPath === router[index] }"
+            >{{ title }}</a
+          >
           <pulse v-if="title === 'Đang diễn ra'" class="live"></pulse>
         </li>
       </ul>
@@ -49,7 +54,6 @@ export default {
   align-items: center;
   justify-content: center;
   background-color: #5d047e !important;
-  color: white !important;
 }
 .is-active {
   background-color: #540474 !important;
@@ -57,7 +61,6 @@ export default {
   transition: all 0.3s;
 }
 .tabs-title {
-  color: white !important;
   font-weight: 500 !important;
   width: 100%;
 }

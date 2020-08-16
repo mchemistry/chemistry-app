@@ -1,17 +1,8 @@
 /* eslint-disable vue/require-v-for-key */
 <template>
   <div class="container">
-    <div class="proton flash">
-      <p
-        :class="[
-          subElement.symbol.length === 3
-            ? 'threeChar'
-            : subElement.symbol.length === 1
-            ? 'oneChar'
-            : '',
-          'element',
-        ]"
-      >
+    <div class="proton">
+      <p class="has-text-centered white font-500" style="margin-top: 8px;">
         {{ subElement.symbol }}
       </p>
     </div>
@@ -72,26 +63,13 @@ export default {
   animation: blink 1.5s infinite;
 }
 
-.threeChar {
-  margin-left: 15px !important;
-}
-
-.oneChar {
-  margin-left: 19.5px !important;
-}
-
 .element {
   color: white;
   font-size: 16px;
   font-weight: bold;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
   text-align: center;
   padding: 0;
-  margin: 0;
-  margin-left: 18px;
-  margin-top: 18px;
+  margin: 18px 18px 0 0;
 }
 .container div span {
   position: absolute;
@@ -113,10 +91,6 @@ export default {
   animation-fill-mode: none;
   animation-play-state: running;
   animation-name: spinner;
-}
-
-.flash:hover {
-  border: 1px solid white;
 }
 
 @keyframes spinner {

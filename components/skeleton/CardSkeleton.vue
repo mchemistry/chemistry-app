@@ -1,13 +1,17 @@
 <template>
   <div class="card">
     <div class="card-image">
-      <b-skeleton height="140px" width="220px" class="fixed-img"></b-skeleton>
+      <b-skeleton
+        height="140px"
+        width="220px"
+        class="none-border-bottom-radius"
+      ></b-skeleton>
     </div>
-    <div class="total-user">
+    <div class="item-center flex-row mt-1" style="width: 50px; heigt: 25px;">
       <b-skeleton height="24px" width="49px" :rounded="false"></b-skeleton>
     </div>
-    <div class="hr"></div>
-    <div class="card-content">
+    <hr class="hr is-relative p-0 mx-1 mb-1" style="top: -0.1px;" />
+    <div class="is-flex flex-column has-text-centered item-center">
       <div class="card-title">
         <b-skeleton
           height="30px"
@@ -15,13 +19,13 @@
           class="has-background-grey-lighter"
         ></b-skeleton>
       </div>
-      <div class="card-title">
+      <div class="mt-1">
         <b-skeleton height="20px" width="180px"></b-skeleton>
       </div>
-      <div class="card-title">
+      <div class="mt-1">
         <b-skeleton height="20px" width="180px"></b-skeleton>
       </div>
-      <div class="btn">
+      <div class="mt-1">
         <b-skeleton height="40px" width="180px" rounded></b-skeleton>
       </div>
     </div>
@@ -34,41 +38,5 @@
   height: 340px;
   background-color: #3c0054;
   border-radius: 8px;
-  order: 10;
-}
-.fixed-img {
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-}
-.card-content {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: center;
-  padding: 0 !important;
-}
-.total-user {
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-  color: #ff7070;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #ff7070;
-  width: 50px;
-  height: 25px;
-  order: 2;
-  margin-top: 10px;
-}
-.hr {
-  position: relative;
-  border-top: 1px solid #ff7070;
-  top: -0.1px;
-}
-.card-title,
-.btn {
-  margin-top: 10px;
 }
 </style>

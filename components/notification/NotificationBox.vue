@@ -5,7 +5,7 @@
       Thông báo
       <a class="mark-as-read">Đánh dấu tất cả là đã đọc</a>
     </div>
-    <vue-scroll :ops="ops">
+    <vue-scroll v-if="!loading" :ops="ops">
       <div class="list-notifications">
         <noti-list :un-read="false"></noti-list>
         <noti-list></noti-list>
@@ -17,6 +17,7 @@
         <noti-list></noti-list>
       </div>
     </vue-scroll>
+    <loader v-if="loading" type="3dot" />
     <div class="view-all">
       <a class="mark-as-read" href="/notifications">Xem tất cả thông báo</a>
     </div>
@@ -25,11 +26,20 @@
 
 <script>
 import vuescroll from 'vuescroll'
+import Loading from '../loading/Loading'
 import NotificationsList from './NotificationsList'
+
 export default {
   components: {
     'vue-scroll': vuescroll,
     'noti-list': NotificationsList,
+    loader: Loading,
+  },
+  props: {
+    loading: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
